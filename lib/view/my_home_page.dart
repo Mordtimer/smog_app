@@ -19,9 +19,8 @@ class _HomePageState extends State<HomePage> {
 
   void initState() {
     super.initState();
-
-    // TODO: Wywołanie funkcji przytegowywującej dane/ podpowiedzi etc
-    Provider.of<HomePageVM>(context, listen: false);
+    
+    Provider.of<HomePageVM>(context, listen: false).getCurrentPollution();
   }
 
   @override

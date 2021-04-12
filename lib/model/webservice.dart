@@ -1,22 +1,22 @@
+import 'dart:convert';
 import 'package:http/http.dart' as http;
-import 'Forecast.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart' as DotEnv;
+import 'package:smog_app/model/pollution_data_model.dart';
 
 // Class creating request for 
 class Webservice {
  
-  Future<Forecast> fetchForecast(String keyword) async {
+  Future<PollutionData> fetchCurrentPollutionData(String lat, String lon) async {
     await DotEnv.load(fileName: "keys.env");
     
-    Uri request = Uri.parse('https://api.openweathermap.org/data/2.5/weather?q=$keyword,pl&APPID=${DotEnv.env['API_KEY']}');
+    // lat = 50, lon = 50 test
+    Uri request = Uri.parse('https://api.openweathermap.org/data/2.5/air_pollution?lat=50&lon=50&appid=${DotEnv.env['API_KEY']}');
+    //Uri request = Uri.parse('https://api.openweathermap.org/data/2.5/weather?q=$keyword,pl&APPID=${DotEnv.env['API_KEY']}');
     final response = await http.get(request);
-    if(response.statusCode == 200) {
-      /*print(Forecast.fromJson(jsonDecode(response.body)).statusCode);
-       return Forecast.fromJson(jsonDecode(response.body));*/
-      
-    } else {
+    if(response.statusCode != 200){
       /*print(Forecast.fromJson(jsonDecode(response.body)).statusCode);*/
       throw Exception("Unable to perform request!");
     }
+    return PollutionData.fromJson(jsonDecode(response.body));
   }
 }
