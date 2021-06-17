@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 
 class CustomSearch extends SearchDelegate {
-  String selectedResult;
+  late String selectedResult;
   List<String> listExample = [];
   List<String> recentList = [];
+  
   CustomSearch(this.recentList, this.listExample);
-
     @override
     ThemeData appBarTheme(BuildContext context) {
     return ThemeData(

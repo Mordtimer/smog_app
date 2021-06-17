@@ -4,7 +4,7 @@ class PollutionData {
   final Coord coord;
   final List<Data> data;
 
-  PollutionData({@required this.coord, @required this.data});
+  PollutionData({required this.coord, required this.data});
 
   factory PollutionData.fromJson(Map<String, dynamic> json) {
     var pollutionList = json['list'] as List;
@@ -18,7 +18,7 @@ class Coord {
   final int longitude;
   final int latitude;
 
-  Coord({@required this.longitude, @required this.latitude});
+  Coord({required this.longitude, required this.latitude});
 
   factory Coord.fromJson(Map<String, dynamic> json) {
     return Coord(longitude: json['lon'], latitude: json['lat']);
@@ -31,9 +31,9 @@ class Data {
   final Components components;
 
   Data({
-    @required this.unixTime,
-    @required this.airQualIndex,
-    @required this.components,
+    required this.unixTime,
+    required this.airQualIndex,
+    required this.components,
   });
 
   factory Data.fromJson(Map<String, dynamic> json) {
@@ -47,7 +47,7 @@ class Data {
 class AirQualIndex {
   final int value;
 
-  AirQualIndex({this.value});
+  AirQualIndex({required this.value});
 
   factory AirQualIndex.fromJson(Map<String, dynamic> json) {
     return AirQualIndex(value: json['aqi']);

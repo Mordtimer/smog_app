@@ -4,7 +4,7 @@ import 'package:smog_app/model/webservice.dart';
 class HomePageVM extends ChangeNotifier {
   final String currentCity = "Wiocha";
 
-  PollutionData _currentPollution;
+  PollutionData? _currentPollution;
 
   List<String> get allCities => ["Miasto 1", "Miasto 2", "Miasto 3"];
 
