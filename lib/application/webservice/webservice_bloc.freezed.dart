@@ -22,6 +22,12 @@ class _$WebserviceEventTearOff {
       lat: lat,
     );
   }
+
+  _reciveCity reciveCity({required String city}) {
+    return _reciveCity(
+      city: city,
+    );
+  }
 }
 
 /// @nodoc
@@ -29,34 +35,31 @@ const $WebserviceEvent = _$WebserviceEventTearOff();
 
 /// @nodoc
 mixin _$WebserviceEvent {
-  int get len => throw _privateConstructorUsedError;
-  int get lat => throw _privateConstructorUsedError;
-
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(int len, int lat) fetchData,
+    required TResult Function(String city) reciveCity,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(int len, int lat)? fetchData,
+    TResult Function(String city)? reciveCity,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_fetchData value) fetchData,
+    required TResult Function(_reciveCity value) reciveCity,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_fetchData value)? fetchData,
+    TResult Function(_reciveCity value)? reciveCity,
     required TResult orElse(),
   }) =>
-      throw _privateConstructorUsedError;
-
-  @JsonKey(ignore: true)
-  $WebserviceEventCopyWith<WebserviceEvent> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -65,7 +68,6 @@ abstract class $WebserviceEventCopyWith<$Res> {
   factory $WebserviceEventCopyWith(
           WebserviceEvent value, $Res Function(WebserviceEvent) then) =
       _$WebserviceEventCopyWithImpl<$Res>;
-  $Res call({int len, int lat});
 }
 
 /// @nodoc
@@ -76,32 +78,13 @@ class _$WebserviceEventCopyWithImpl<$Res>
   final WebserviceEvent _value;
   // ignore: unused_field
   final $Res Function(WebserviceEvent) _then;
-
-  @override
-  $Res call({
-    Object? len = freezed,
-    Object? lat = freezed,
-  }) {
-    return _then(_value.copyWith(
-      len: len == freezed
-          ? _value.len
-          : len // ignore: cast_nullable_to_non_nullable
-              as int,
-      lat: lat == freezed
-          ? _value.lat
-          : lat // ignore: cast_nullable_to_non_nullable
-              as int,
-    ));
-  }
 }
 
 /// @nodoc
-abstract class _$fetchDataCopyWith<$Res>
-    implements $WebserviceEventCopyWith<$Res> {
+abstract class _$fetchDataCopyWith<$Res> {
   factory _$fetchDataCopyWith(
           _fetchData value, $Res Function(_fetchData) then) =
       __$fetchDataCopyWithImpl<$Res>;
-  @override
   $Res call({int len, int lat});
 }
 
@@ -181,6 +164,7 @@ class _$_fetchData with DiagnosticableTreeMixin implements _fetchData {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(int len, int lat) fetchData,
+    required TResult Function(String city) reciveCity,
   }) {
     return fetchData(len, lat);
   }
@@ -189,6 +173,7 @@ class _$_fetchData with DiagnosticableTreeMixin implements _fetchData {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(int len, int lat)? fetchData,
+    TResult Function(String city)? reciveCity,
     required TResult orElse(),
   }) {
     if (fetchData != null) {
@@ -201,6 +186,7 @@ class _$_fetchData with DiagnosticableTreeMixin implements _fetchData {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_fetchData value) fetchData,
+    required TResult Function(_reciveCity value) reciveCity,
   }) {
     return fetchData(this);
   }
@@ -209,6 +195,7 @@ class _$_fetchData with DiagnosticableTreeMixin implements _fetchData {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_fetchData value)? fetchData,
+    TResult Function(_reciveCity value)? reciveCity,
     required TResult orElse(),
   }) {
     if (fetchData != null) {
@@ -221,13 +208,134 @@ class _$_fetchData with DiagnosticableTreeMixin implements _fetchData {
 abstract class _fetchData implements WebserviceEvent {
   const factory _fetchData({required int len, required int lat}) = _$_fetchData;
 
-  @override
   int get len => throw _privateConstructorUsedError;
-  @override
   int get lat => throw _privateConstructorUsedError;
-  @override
   @JsonKey(ignore: true)
   _$fetchDataCopyWith<_fetchData> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$reciveCityCopyWith<$Res> {
+  factory _$reciveCityCopyWith(
+          _reciveCity value, $Res Function(_reciveCity) then) =
+      __$reciveCityCopyWithImpl<$Res>;
+  $Res call({String city});
+}
+
+/// @nodoc
+class __$reciveCityCopyWithImpl<$Res>
+    extends _$WebserviceEventCopyWithImpl<$Res>
+    implements _$reciveCityCopyWith<$Res> {
+  __$reciveCityCopyWithImpl(
+      _reciveCity _value, $Res Function(_reciveCity) _then)
+      : super(_value, (v) => _then(v as _reciveCity));
+
+  @override
+  _reciveCity get _value => super._value as _reciveCity;
+
+  @override
+  $Res call({
+    Object? city = freezed,
+  }) {
+    return _then(_reciveCity(
+      city: city == freezed
+          ? _value.city
+          : city // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$_reciveCity with DiagnosticableTreeMixin implements _reciveCity {
+  const _$_reciveCity({required this.city});
+
+  @override
+  final String city;
+
+  @override
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+    return 'WebserviceEvent.reciveCity(city: $city)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'WebserviceEvent.reciveCity'))
+      ..add(DiagnosticsProperty('city', city));
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other is _reciveCity &&
+            (identical(other.city, city) ||
+                const DeepCollectionEquality().equals(other.city, city)));
+  }
+
+  @override
+  int get hashCode =>
+      runtimeType.hashCode ^ const DeepCollectionEquality().hash(city);
+
+  @JsonKey(ignore: true)
+  @override
+  _$reciveCityCopyWith<_reciveCity> get copyWith =>
+      __$reciveCityCopyWithImpl<_reciveCity>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(int len, int lat) fetchData,
+    required TResult Function(String city) reciveCity,
+  }) {
+    return reciveCity(city);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(int len, int lat)? fetchData,
+    TResult Function(String city)? reciveCity,
+    required TResult orElse(),
+  }) {
+    if (reciveCity != null) {
+      return reciveCity(city);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_fetchData value) fetchData,
+    required TResult Function(_reciveCity value) reciveCity,
+  }) {
+    return reciveCity(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_fetchData value)? fetchData,
+    TResult Function(_reciveCity value)? reciveCity,
+    required TResult orElse(),
+  }) {
+    if (reciveCity != null) {
+      return reciveCity(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _reciveCity implements WebserviceEvent {
+  const factory _reciveCity({required String city}) = _$_reciveCity;
+
+  String get city => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  _$reciveCityCopyWith<_reciveCity> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -243,14 +351,22 @@ class _$WebserviceStateTearOff {
     return const _LoadInProgress();
   }
 
-  _DataRecived dataRecived(PollutionData recivedData) {
+  _DataRecived dataRecived(
+      {required PollutionData pollutionData, required String city}) {
     return _DataRecived(
-      recivedData,
+      pollutionData: pollutionData,
+      city: city,
     );
   }
 
   _LoadFailure loadFailure() {
     return const _LoadFailure();
+  }
+
+  _SelectedCity selectedCity({required String city}) {
+    return _SelectedCity(
+      city: city,
+    );
   }
 }
 
@@ -263,16 +379,19 @@ mixin _$WebserviceState {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loadInProgress,
-    required TResult Function(PollutionData recivedData) dataRecived,
+    required TResult Function(PollutionData pollutionData, String city)
+        dataRecived,
     required TResult Function() loadFailure,
+    required TResult Function(String city) selectedCity,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loadInProgress,
-    TResult Function(PollutionData recivedData)? dataRecived,
+    TResult Function(PollutionData pollutionData, String city)? dataRecived,
     TResult Function()? loadFailure,
+    TResult Function(String city)? selectedCity,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -282,6 +401,7 @@ mixin _$WebserviceState {
     required TResult Function(_LoadInProgress value) loadInProgress,
     required TResult Function(_DataRecived value) dataRecived,
     required TResult Function(_LoadFailure value) loadFailure,
+    required TResult Function(_SelectedCity value) selectedCity,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -290,6 +410,7 @@ mixin _$WebserviceState {
     TResult Function(_LoadInProgress value)? loadInProgress,
     TResult Function(_DataRecived value)? dataRecived,
     TResult Function(_LoadFailure value)? loadFailure,
+    TResult Function(_SelectedCity value)? selectedCity,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -357,8 +478,10 @@ class _$_Initial with DiagnosticableTreeMixin implements _Initial {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loadInProgress,
-    required TResult Function(PollutionData recivedData) dataRecived,
+    required TResult Function(PollutionData pollutionData, String city)
+        dataRecived,
     required TResult Function() loadFailure,
+    required TResult Function(String city) selectedCity,
   }) {
     return initial();
   }
@@ -368,8 +491,9 @@ class _$_Initial with DiagnosticableTreeMixin implements _Initial {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loadInProgress,
-    TResult Function(PollutionData recivedData)? dataRecived,
+    TResult Function(PollutionData pollutionData, String city)? dataRecived,
     TResult Function()? loadFailure,
+    TResult Function(String city)? selectedCity,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -385,6 +509,7 @@ class _$_Initial with DiagnosticableTreeMixin implements _Initial {
     required TResult Function(_LoadInProgress value) loadInProgress,
     required TResult Function(_DataRecived value) dataRecived,
     required TResult Function(_LoadFailure value) loadFailure,
+    required TResult Function(_SelectedCity value) selectedCity,
   }) {
     return initial(this);
   }
@@ -396,6 +521,7 @@ class _$_Initial with DiagnosticableTreeMixin implements _Initial {
     TResult Function(_LoadInProgress value)? loadInProgress,
     TResult Function(_DataRecived value)? dataRecived,
     TResult Function(_LoadFailure value)? loadFailure,
+    TResult Function(_SelectedCity value)? selectedCity,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -460,8 +586,10 @@ class _$_LoadInProgress
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loadInProgress,
-    required TResult Function(PollutionData recivedData) dataRecived,
+    required TResult Function(PollutionData pollutionData, String city)
+        dataRecived,
     required TResult Function() loadFailure,
+    required TResult Function(String city) selectedCity,
   }) {
     return loadInProgress();
   }
@@ -471,8 +599,9 @@ class _$_LoadInProgress
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loadInProgress,
-    TResult Function(PollutionData recivedData)? dataRecived,
+    TResult Function(PollutionData pollutionData, String city)? dataRecived,
     TResult Function()? loadFailure,
+    TResult Function(String city)? selectedCity,
     required TResult orElse(),
   }) {
     if (loadInProgress != null) {
@@ -488,6 +617,7 @@ class _$_LoadInProgress
     required TResult Function(_LoadInProgress value) loadInProgress,
     required TResult Function(_DataRecived value) dataRecived,
     required TResult Function(_LoadFailure value) loadFailure,
+    required TResult Function(_SelectedCity value) selectedCity,
   }) {
     return loadInProgress(this);
   }
@@ -499,6 +629,7 @@ class _$_LoadInProgress
     TResult Function(_LoadInProgress value)? loadInProgress,
     TResult Function(_DataRecived value)? dataRecived,
     TResult Function(_LoadFailure value)? loadFailure,
+    TResult Function(_SelectedCity value)? selectedCity,
     required TResult orElse(),
   }) {
     if (loadInProgress != null) {
@@ -517,7 +648,7 @@ abstract class _$DataRecivedCopyWith<$Res> {
   factory _$DataRecivedCopyWith(
           _DataRecived value, $Res Function(_DataRecived) then) =
       __$DataRecivedCopyWithImpl<$Res>;
-  $Res call({PollutionData recivedData});
+  $Res call({PollutionData pollutionData, String city});
 }
 
 /// @nodoc
@@ -533,13 +664,18 @@ class __$DataRecivedCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object? recivedData = freezed,
+    Object? pollutionData = freezed,
+    Object? city = freezed,
   }) {
     return _then(_DataRecived(
-      recivedData == freezed
-          ? _value.recivedData
-          : recivedData // ignore: cast_nullable_to_non_nullable
+      pollutionData: pollutionData == freezed
+          ? _value.pollutionData
+          : pollutionData // ignore: cast_nullable_to_non_nullable
               as PollutionData,
+      city: city == freezed
+          ? _value.city
+          : city // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
@@ -547,14 +683,16 @@ class __$DataRecivedCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_DataRecived with DiagnosticableTreeMixin implements _DataRecived {
-  const _$_DataRecived(this.recivedData);
+  const _$_DataRecived({required this.pollutionData, required this.city});
 
   @override
-  final PollutionData recivedData;
+  final PollutionData pollutionData;
+  @override
+  final String city;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'WebserviceState.dataRecived(recivedData: $recivedData)';
+    return 'WebserviceState.dataRecived(pollutionData: $pollutionData, city: $city)';
   }
 
   @override
@@ -562,21 +700,26 @@ class _$_DataRecived with DiagnosticableTreeMixin implements _DataRecived {
     super.debugFillProperties(properties);
     properties
       ..add(DiagnosticsProperty('type', 'WebserviceState.dataRecived'))
-      ..add(DiagnosticsProperty('recivedData', recivedData));
+      ..add(DiagnosticsProperty('pollutionData', pollutionData))
+      ..add(DiagnosticsProperty('city', city));
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other is _DataRecived &&
-            (identical(other.recivedData, recivedData) ||
+            (identical(other.pollutionData, pollutionData) ||
                 const DeepCollectionEquality()
-                    .equals(other.recivedData, recivedData)));
+                    .equals(other.pollutionData, pollutionData)) &&
+            (identical(other.city, city) ||
+                const DeepCollectionEquality().equals(other.city, city)));
   }
 
   @override
   int get hashCode =>
-      runtimeType.hashCode ^ const DeepCollectionEquality().hash(recivedData);
+      runtimeType.hashCode ^
+      const DeepCollectionEquality().hash(pollutionData) ^
+      const DeepCollectionEquality().hash(city);
 
   @JsonKey(ignore: true)
   @override
@@ -588,10 +731,12 @@ class _$_DataRecived with DiagnosticableTreeMixin implements _DataRecived {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loadInProgress,
-    required TResult Function(PollutionData recivedData) dataRecived,
+    required TResult Function(PollutionData pollutionData, String city)
+        dataRecived,
     required TResult Function() loadFailure,
+    required TResult Function(String city) selectedCity,
   }) {
-    return dataRecived(recivedData);
+    return dataRecived(pollutionData, city);
   }
 
   @override
@@ -599,12 +744,13 @@ class _$_DataRecived with DiagnosticableTreeMixin implements _DataRecived {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loadInProgress,
-    TResult Function(PollutionData recivedData)? dataRecived,
+    TResult Function(PollutionData pollutionData, String city)? dataRecived,
     TResult Function()? loadFailure,
+    TResult Function(String city)? selectedCity,
     required TResult orElse(),
   }) {
     if (dataRecived != null) {
-      return dataRecived(recivedData);
+      return dataRecived(pollutionData, city);
     }
     return orElse();
   }
@@ -616,6 +762,7 @@ class _$_DataRecived with DiagnosticableTreeMixin implements _DataRecived {
     required TResult Function(_LoadInProgress value) loadInProgress,
     required TResult Function(_DataRecived value) dataRecived,
     required TResult Function(_LoadFailure value) loadFailure,
+    required TResult Function(_SelectedCity value) selectedCity,
   }) {
     return dataRecived(this);
   }
@@ -627,6 +774,7 @@ class _$_DataRecived with DiagnosticableTreeMixin implements _DataRecived {
     TResult Function(_LoadInProgress value)? loadInProgress,
     TResult Function(_DataRecived value)? dataRecived,
     TResult Function(_LoadFailure value)? loadFailure,
+    TResult Function(_SelectedCity value)? selectedCity,
     required TResult orElse(),
   }) {
     if (dataRecived != null) {
@@ -637,9 +785,12 @@ class _$_DataRecived with DiagnosticableTreeMixin implements _DataRecived {
 }
 
 abstract class _DataRecived implements WebserviceState {
-  const factory _DataRecived(PollutionData recivedData) = _$_DataRecived;
+  const factory _DataRecived(
+      {required PollutionData pollutionData,
+      required String city}) = _$_DataRecived;
 
-  PollutionData get recivedData => throw _privateConstructorUsedError;
+  PollutionData get pollutionData => throw _privateConstructorUsedError;
+  String get city => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   _$DataRecivedCopyWith<_DataRecived> get copyWith =>
       throw _privateConstructorUsedError;
@@ -693,8 +844,10 @@ class _$_LoadFailure with DiagnosticableTreeMixin implements _LoadFailure {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loadInProgress,
-    required TResult Function(PollutionData recivedData) dataRecived,
+    required TResult Function(PollutionData pollutionData, String city)
+        dataRecived,
     required TResult Function() loadFailure,
+    required TResult Function(String city) selectedCity,
   }) {
     return loadFailure();
   }
@@ -704,8 +857,9 @@ class _$_LoadFailure with DiagnosticableTreeMixin implements _LoadFailure {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loadInProgress,
-    TResult Function(PollutionData recivedData)? dataRecived,
+    TResult Function(PollutionData pollutionData, String city)? dataRecived,
     TResult Function()? loadFailure,
+    TResult Function(String city)? selectedCity,
     required TResult orElse(),
   }) {
     if (loadFailure != null) {
@@ -721,6 +875,7 @@ class _$_LoadFailure with DiagnosticableTreeMixin implements _LoadFailure {
     required TResult Function(_LoadInProgress value) loadInProgress,
     required TResult Function(_DataRecived value) dataRecived,
     required TResult Function(_LoadFailure value) loadFailure,
+    required TResult Function(_SelectedCity value) selectedCity,
   }) {
     return loadFailure(this);
   }
@@ -732,6 +887,7 @@ class _$_LoadFailure with DiagnosticableTreeMixin implements _LoadFailure {
     TResult Function(_LoadInProgress value)? loadInProgress,
     TResult Function(_DataRecived value)? dataRecived,
     TResult Function(_LoadFailure value)? loadFailure,
+    TResult Function(_SelectedCity value)? selectedCity,
     required TResult orElse(),
   }) {
     if (loadFailure != null) {
@@ -743,4 +899,141 @@ class _$_LoadFailure with DiagnosticableTreeMixin implements _LoadFailure {
 
 abstract class _LoadFailure implements WebserviceState {
   const factory _LoadFailure() = _$_LoadFailure;
+}
+
+/// @nodoc
+abstract class _$SelectedCityCopyWith<$Res> {
+  factory _$SelectedCityCopyWith(
+          _SelectedCity value, $Res Function(_SelectedCity) then) =
+      __$SelectedCityCopyWithImpl<$Res>;
+  $Res call({String city});
+}
+
+/// @nodoc
+class __$SelectedCityCopyWithImpl<$Res>
+    extends _$WebserviceStateCopyWithImpl<$Res>
+    implements _$SelectedCityCopyWith<$Res> {
+  __$SelectedCityCopyWithImpl(
+      _SelectedCity _value, $Res Function(_SelectedCity) _then)
+      : super(_value, (v) => _then(v as _SelectedCity));
+
+  @override
+  _SelectedCity get _value => super._value as _SelectedCity;
+
+  @override
+  $Res call({
+    Object? city = freezed,
+  }) {
+    return _then(_SelectedCity(
+      city: city == freezed
+          ? _value.city
+          : city // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$_SelectedCity with DiagnosticableTreeMixin implements _SelectedCity {
+  const _$_SelectedCity({required this.city});
+
+  @override
+  final String city;
+
+  @override
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+    return 'WebserviceState.selectedCity(city: $city)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'WebserviceState.selectedCity'))
+      ..add(DiagnosticsProperty('city', city));
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other is _SelectedCity &&
+            (identical(other.city, city) ||
+                const DeepCollectionEquality().equals(other.city, city)));
+  }
+
+  @override
+  int get hashCode =>
+      runtimeType.hashCode ^ const DeepCollectionEquality().hash(city);
+
+  @JsonKey(ignore: true)
+  @override
+  _$SelectedCityCopyWith<_SelectedCity> get copyWith =>
+      __$SelectedCityCopyWithImpl<_SelectedCity>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() loadInProgress,
+    required TResult Function(PollutionData pollutionData, String city)
+        dataRecived,
+    required TResult Function() loadFailure,
+    required TResult Function(String city) selectedCity,
+  }) {
+    return selectedCity(city);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? loadInProgress,
+    TResult Function(PollutionData pollutionData, String city)? dataRecived,
+    TResult Function()? loadFailure,
+    TResult Function(String city)? selectedCity,
+    required TResult orElse(),
+  }) {
+    if (selectedCity != null) {
+      return selectedCity(city);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial value) initial,
+    required TResult Function(_LoadInProgress value) loadInProgress,
+    required TResult Function(_DataRecived value) dataRecived,
+    required TResult Function(_LoadFailure value) loadFailure,
+    required TResult Function(_SelectedCity value) selectedCity,
+  }) {
+    return selectedCity(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_LoadInProgress value)? loadInProgress,
+    TResult Function(_DataRecived value)? dataRecived,
+    TResult Function(_LoadFailure value)? loadFailure,
+    TResult Function(_SelectedCity value)? selectedCity,
+    required TResult orElse(),
+  }) {
+    if (selectedCity != null) {
+      return selectedCity(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _SelectedCity implements WebserviceState {
+  const factory _SelectedCity({required String city}) = _$_SelectedCity;
+
+  String get city => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  _$SelectedCityCopyWith<_SelectedCity> get copyWith =>
+      throw _privateConstructorUsedError;
 }

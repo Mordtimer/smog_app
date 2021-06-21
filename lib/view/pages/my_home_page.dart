@@ -1,8 +1,3 @@
-import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
-import 'package:smog_app/view_model/home_page_vm.dart';
-
-import 'custom_search.dart';
 
 /*
 class HomePage extends StatefulWidget {

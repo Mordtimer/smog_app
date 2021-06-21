@@ -1,13 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:get_it/get_it.dart';
-import 'package:provider/provider.dart';
 import 'package:smog_app/application/webservice/webservice_bloc.dart';
 import 'package:smog_app/injection.dart';
-import 'package:smog_app/model/webservice.dart';
-import 'package:smog_app/view/my_home_page.dart';
-import 'package:smog_app/view/weather_page.dart';
-import 'package:smog_app/view_model/home_page_vm.dart';
+import 'package:smog_app/view/Pages/load_page.dart';
 
 void main(){
   configureDependencies(Env.prod);  
@@ -25,7 +20,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       home: BlocProvider(
         create: (context) => getIt<WebserviceBloc>(),
-        child: WeatherPage(),
+        child: LoadPage(),
       )
     );
   }
