@@ -1,29 +1,18 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
-import 'package:smog_app/view_model/home_page_vm.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:smog_app/application/webservice/webservice_bloc.dart';
+import 'package:smog_app/view/custom_search.dart';
 
-import 'custom_search.dart';
+class WeatherPage extends StatelessWidget {
+   List<String> get allCities => ["Miasto 1", "Miasto 2", "Miasto 3"];
 
-/*
-class HomePage extends StatefulWidget {
-
-  late final String title;
-
-  @override
-  _HomePageState createState() => _HomePageState();
-}
-
-class _HomePageState extends State<HomePage> {
-
-  void initState() {
-    super.initState();
-  }
-
+  List<String> get searchHistory => ["Historia 1", "Historia 2", "Historia 3"];
   @override
   Widget build(BuildContext context) {
-    HomePageVM vm = Provider.of<HomePageVM>(context);
-
-    return Scaffold(
+    return BlocConsumer<WebserviceBloc, WebserviceState>(
+      listener: (context, state) {},
+      builder: (context, state) { return Scaffold(
        appBar: AppBar(
             centerTitle: true,
             leading: IconButton(
@@ -34,7 +23,7 @@ class _HomePageState extends State<HomePage> {
               },
             ),
             title: Text(
-              vm.currentCity,
+              'lol',
               style: Theme.of(context).primaryTextTheme.headline5,
             ),
             actions: [
@@ -44,8 +33,7 @@ class _HomePageState extends State<HomePage> {
                 onPressed: () async {
                   final searchResult = await showSearch(
                           context: context,
-                          delegate: CustomSearch(vm.searchHistory, vm.allCities))
-                      as String;
+                          delegate: CustomSearch(searchHistory, allCities));
                   //vm.currentCity = result;
                   //vm.fetchForecast();
                 },
@@ -61,7 +49,7 @@ class _HomePageState extends State<HomePage> {
           ],
         ),
       ),
+    );},
     );
   }
 }
-*/

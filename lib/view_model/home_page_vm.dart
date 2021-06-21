@@ -13,8 +13,8 @@ class HomePageVM extends ChangeNotifier {
   Future<void> getCurrentPollution() async {
     final response = await Webservice().fetchCurrentPollutionData("50", "50");
 
-    if (response!= null){
-      _currentPollution = response;
+    if (response != null){
+      //_currentPollution = response;
       notifyListeners();
     }
 
