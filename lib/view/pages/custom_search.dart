@@ -34,6 +34,7 @@ class CustomSearch extends SearchDelegate {
     return IconButton(
       icon: Icon(Icons.arrow_back),
       onPressed: () {
+       
         close(context, result);
       },
     );
@@ -42,8 +43,6 @@ class CustomSearch extends SearchDelegate {
   @override
   Widget buildResults(BuildContext context) {
     result = right(query);
-    final str = result.fold((l) => 'error', (r) => r);
-    print(str);
     close(context, result);
     return CircularProgressIndicator();
   
@@ -69,12 +68,8 @@ class CustomSearch extends SearchDelegate {
           return ListTile(
             title: Text(suggestionList[index]),
             onTap: () {
-              result.fold((l) => null, (r) {
-                suggestionList[index];
-                addToHistory(r);
-                print(r);
-                close(context, r);
-              });
+              result = right(suggestionList[index]);
+              close(context, result);
             },
           );
         });

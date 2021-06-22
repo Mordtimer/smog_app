@@ -20,7 +20,6 @@ class Webservice {
     final response = await http.get(request);
     try{
       if(response.statusCode != 200){
-      /*print(Forecast.fromJson(jsonDecode(response.body)).statusCode);*/
       return left(Failure());
     } else 
     return right(PollutionData.fromJson(jsonDecode(response.body)));

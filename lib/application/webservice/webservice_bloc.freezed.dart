@@ -16,16 +16,20 @@ final _privateConstructorUsedError = UnsupportedError(
 class _$WebserviceEventTearOff {
   const _$WebserviceEventTearOff();
 
-  _fetchData fetchData({required int len, required int lat}) {
-    return _fetchData(
-      len: len,
-      lat: lat,
+  FetchData fetchData() {
+    return const FetchData();
+  }
+
+  NewCity newCity({required String city}) {
+    return NewCity(
+      city: city,
     );
   }
 
-  _reciveCity reciveCity({required String city}) {
-    return _reciveCity(
-      city: city,
+  NewCoords newCoords({required double len, required double lat}) {
+    return NewCoords(
+      len: len,
+      lat: lat,
     );
   }
 }
@@ -37,27 +41,31 @@ const $WebserviceEvent = _$WebserviceEventTearOff();
 mixin _$WebserviceEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(int len, int lat) fetchData,
-    required TResult Function(String city) reciveCity,
+    required TResult Function() fetchData,
+    required TResult Function(String city) newCity,
+    required TResult Function(double len, double lat) newCoords,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(int len, int lat)? fetchData,
-    TResult Function(String city)? reciveCity,
+    TResult Function()? fetchData,
+    TResult Function(String city)? newCity,
+    TResult Function(double len, double lat)? newCoords,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_fetchData value) fetchData,
-    required TResult Function(_reciveCity value) reciveCity,
+    required TResult Function(FetchData value) fetchData,
+    required TResult Function(NewCity value) newCity,
+    required TResult Function(NewCoords value) newCoords,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_fetchData value)? fetchData,
-    TResult Function(_reciveCity value)? reciveCity,
+    TResult Function(FetchData value)? fetchData,
+    TResult Function(NewCity value)? newCity,
+    TResult Function(NewCoords value)? newCoords,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -81,60 +89,276 @@ class _$WebserviceEventCopyWithImpl<$Res>
 }
 
 /// @nodoc
-abstract class _$fetchDataCopyWith<$Res> {
-  factory _$fetchDataCopyWith(
-          _fetchData value, $Res Function(_fetchData) then) =
-      __$fetchDataCopyWithImpl<$Res>;
-  $Res call({int len, int lat});
+abstract class $FetchDataCopyWith<$Res> {
+  factory $FetchDataCopyWith(FetchData value, $Res Function(FetchData) then) =
+      _$FetchDataCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$fetchDataCopyWithImpl<$Res> extends _$WebserviceEventCopyWithImpl<$Res>
-    implements _$fetchDataCopyWith<$Res> {
-  __$fetchDataCopyWithImpl(_fetchData _value, $Res Function(_fetchData) _then)
-      : super(_value, (v) => _then(v as _fetchData));
+class _$FetchDataCopyWithImpl<$Res> extends _$WebserviceEventCopyWithImpl<$Res>
+    implements $FetchDataCopyWith<$Res> {
+  _$FetchDataCopyWithImpl(FetchData _value, $Res Function(FetchData) _then)
+      : super(_value, (v) => _then(v as FetchData));
 
   @override
-  _fetchData get _value => super._value as _fetchData;
+  FetchData get _value => super._value as FetchData;
+}
+
+/// @nodoc
+
+class _$FetchData with DiagnosticableTreeMixin implements FetchData {
+  const _$FetchData();
+
+  @override
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+    return 'WebserviceEvent.fetchData()';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties..add(DiagnosticsProperty('type', 'WebserviceEvent.fetchData'));
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) || (other is FetchData);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() fetchData,
+    required TResult Function(String city) newCity,
+    required TResult Function(double len, double lat) newCoords,
+  }) {
+    return fetchData();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? fetchData,
+    TResult Function(String city)? newCity,
+    TResult Function(double len, double lat)? newCoords,
+    required TResult orElse(),
+  }) {
+    if (fetchData != null) {
+      return fetchData();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(FetchData value) fetchData,
+    required TResult Function(NewCity value) newCity,
+    required TResult Function(NewCoords value) newCoords,
+  }) {
+    return fetchData(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(FetchData value)? fetchData,
+    TResult Function(NewCity value)? newCity,
+    TResult Function(NewCoords value)? newCoords,
+    required TResult orElse(),
+  }) {
+    if (fetchData != null) {
+      return fetchData(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class FetchData implements WebserviceEvent {
+  const factory FetchData() = _$FetchData;
+}
+
+/// @nodoc
+abstract class $NewCityCopyWith<$Res> {
+  factory $NewCityCopyWith(NewCity value, $Res Function(NewCity) then) =
+      _$NewCityCopyWithImpl<$Res>;
+  $Res call({String city});
+}
+
+/// @nodoc
+class _$NewCityCopyWithImpl<$Res> extends _$WebserviceEventCopyWithImpl<$Res>
+    implements $NewCityCopyWith<$Res> {
+  _$NewCityCopyWithImpl(NewCity _value, $Res Function(NewCity) _then)
+      : super(_value, (v) => _then(v as NewCity));
+
+  @override
+  NewCity get _value => super._value as NewCity;
 
   @override
   $Res call({
-    Object? len = freezed,
-    Object? lat = freezed,
+    Object? city = freezed,
   }) {
-    return _then(_fetchData(
-      len: len == freezed
-          ? _value.len
-          : len // ignore: cast_nullable_to_non_nullable
-              as int,
-      lat: lat == freezed
-          ? _value.lat
-          : lat // ignore: cast_nullable_to_non_nullable
-              as int,
+    return _then(NewCity(
+      city: city == freezed
+          ? _value.city
+          : city // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
 
 /// @nodoc
 
-class _$_fetchData with DiagnosticableTreeMixin implements _fetchData {
-  const _$_fetchData({required this.len, required this.lat});
+class _$NewCity with DiagnosticableTreeMixin implements NewCity {
+  const _$NewCity({required this.city});
 
   @override
-  final int len;
-  @override
-  final int lat;
+  final String city;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'WebserviceEvent.fetchData(len: $len, lat: $lat)';
+    return 'WebserviceEvent.newCity(city: $city)';
   }
 
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
     properties
-      ..add(DiagnosticsProperty('type', 'WebserviceEvent.fetchData'))
+      ..add(DiagnosticsProperty('type', 'WebserviceEvent.newCity'))
+      ..add(DiagnosticsProperty('city', city));
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other is NewCity &&
+            (identical(other.city, city) ||
+                const DeepCollectionEquality().equals(other.city, city)));
+  }
+
+  @override
+  int get hashCode =>
+      runtimeType.hashCode ^ const DeepCollectionEquality().hash(city);
+
+  @JsonKey(ignore: true)
+  @override
+  $NewCityCopyWith<NewCity> get copyWith =>
+      _$NewCityCopyWithImpl<NewCity>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() fetchData,
+    required TResult Function(String city) newCity,
+    required TResult Function(double len, double lat) newCoords,
+  }) {
+    return newCity(city);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? fetchData,
+    TResult Function(String city)? newCity,
+    TResult Function(double len, double lat)? newCoords,
+    required TResult orElse(),
+  }) {
+    if (newCity != null) {
+      return newCity(city);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(FetchData value) fetchData,
+    required TResult Function(NewCity value) newCity,
+    required TResult Function(NewCoords value) newCoords,
+  }) {
+    return newCity(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(FetchData value)? fetchData,
+    TResult Function(NewCity value)? newCity,
+    TResult Function(NewCoords value)? newCoords,
+    required TResult orElse(),
+  }) {
+    if (newCity != null) {
+      return newCity(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class NewCity implements WebserviceEvent {
+  const factory NewCity({required String city}) = _$NewCity;
+
+  String get city => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  $NewCityCopyWith<NewCity> get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $NewCoordsCopyWith<$Res> {
+  factory $NewCoordsCopyWith(NewCoords value, $Res Function(NewCoords) then) =
+      _$NewCoordsCopyWithImpl<$Res>;
+  $Res call({double len, double lat});
+}
+
+/// @nodoc
+class _$NewCoordsCopyWithImpl<$Res> extends _$WebserviceEventCopyWithImpl<$Res>
+    implements $NewCoordsCopyWith<$Res> {
+  _$NewCoordsCopyWithImpl(NewCoords _value, $Res Function(NewCoords) _then)
+      : super(_value, (v) => _then(v as NewCoords));
+
+  @override
+  NewCoords get _value => super._value as NewCoords;
+
+  @override
+  $Res call({
+    Object? len = freezed,
+    Object? lat = freezed,
+  }) {
+    return _then(NewCoords(
+      len: len == freezed
+          ? _value.len
+          : len // ignore: cast_nullable_to_non_nullable
+              as double,
+      lat: lat == freezed
+          ? _value.lat
+          : lat // ignore: cast_nullable_to_non_nullable
+              as double,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$NewCoords with DiagnosticableTreeMixin implements NewCoords {
+  const _$NewCoords({required this.len, required this.lat});
+
+  @override
+  final double len;
+  @override
+  final double lat;
+
+  @override
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+    return 'WebserviceEvent.newCoords(len: $len, lat: $lat)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'WebserviceEvent.newCoords'))
       ..add(DiagnosticsProperty('len', len))
       ..add(DiagnosticsProperty('lat', lat));
   }
@@ -142,7 +366,7 @@ class _$_fetchData with DiagnosticableTreeMixin implements _fetchData {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is _fetchData &&
+        (other is NewCoords &&
             (identical(other.len, len) ||
                 const DeepCollectionEquality().equals(other.len, len)) &&
             (identical(other.lat, lat) ||
@@ -157,27 +381,29 @@ class _$_fetchData with DiagnosticableTreeMixin implements _fetchData {
 
   @JsonKey(ignore: true)
   @override
-  _$fetchDataCopyWith<_fetchData> get copyWith =>
-      __$fetchDataCopyWithImpl<_fetchData>(this, _$identity);
+  $NewCoordsCopyWith<NewCoords> get copyWith =>
+      _$NewCoordsCopyWithImpl<NewCoords>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(int len, int lat) fetchData,
-    required TResult Function(String city) reciveCity,
+    required TResult Function() fetchData,
+    required TResult Function(String city) newCity,
+    required TResult Function(double len, double lat) newCoords,
   }) {
-    return fetchData(len, lat);
+    return newCoords(len, lat);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(int len, int lat)? fetchData,
-    TResult Function(String city)? reciveCity,
+    TResult Function()? fetchData,
+    TResult Function(String city)? newCity,
+    TResult Function(double len, double lat)? newCoords,
     required TResult orElse(),
   }) {
-    if (fetchData != null) {
-      return fetchData(len, lat);
+    if (newCoords != null) {
+      return newCoords(len, lat);
     }
     return orElse();
   }
@@ -185,157 +411,36 @@ class _$_fetchData with DiagnosticableTreeMixin implements _fetchData {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_fetchData value) fetchData,
-    required TResult Function(_reciveCity value) reciveCity,
+    required TResult Function(FetchData value) fetchData,
+    required TResult Function(NewCity value) newCity,
+    required TResult Function(NewCoords value) newCoords,
   }) {
-    return fetchData(this);
+    return newCoords(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_fetchData value)? fetchData,
-    TResult Function(_reciveCity value)? reciveCity,
+    TResult Function(FetchData value)? fetchData,
+    TResult Function(NewCity value)? newCity,
+    TResult Function(NewCoords value)? newCoords,
     required TResult orElse(),
   }) {
-    if (fetchData != null) {
-      return fetchData(this);
+    if (newCoords != null) {
+      return newCoords(this);
     }
     return orElse();
   }
 }
 
-abstract class _fetchData implements WebserviceEvent {
-  const factory _fetchData({required int len, required int lat}) = _$_fetchData;
+abstract class NewCoords implements WebserviceEvent {
+  const factory NewCoords({required double len, required double lat}) =
+      _$NewCoords;
 
-  int get len => throw _privateConstructorUsedError;
-  int get lat => throw _privateConstructorUsedError;
+  double get len => throw _privateConstructorUsedError;
+  double get lat => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  _$fetchDataCopyWith<_fetchData> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class _$reciveCityCopyWith<$Res> {
-  factory _$reciveCityCopyWith(
-          _reciveCity value, $Res Function(_reciveCity) then) =
-      __$reciveCityCopyWithImpl<$Res>;
-  $Res call({String city});
-}
-
-/// @nodoc
-class __$reciveCityCopyWithImpl<$Res>
-    extends _$WebserviceEventCopyWithImpl<$Res>
-    implements _$reciveCityCopyWith<$Res> {
-  __$reciveCityCopyWithImpl(
-      _reciveCity _value, $Res Function(_reciveCity) _then)
-      : super(_value, (v) => _then(v as _reciveCity));
-
-  @override
-  _reciveCity get _value => super._value as _reciveCity;
-
-  @override
-  $Res call({
-    Object? city = freezed,
-  }) {
-    return _then(_reciveCity(
-      city: city == freezed
-          ? _value.city
-          : city // ignore: cast_nullable_to_non_nullable
-              as String,
-    ));
-  }
-}
-
-/// @nodoc
-
-class _$_reciveCity with DiagnosticableTreeMixin implements _reciveCity {
-  const _$_reciveCity({required this.city});
-
-  @override
-  final String city;
-
-  @override
-  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'WebserviceEvent.reciveCity(city: $city)';
-  }
-
-  @override
-  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-    super.debugFillProperties(properties);
-    properties
-      ..add(DiagnosticsProperty('type', 'WebserviceEvent.reciveCity'))
-      ..add(DiagnosticsProperty('city', city));
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other is _reciveCity &&
-            (identical(other.city, city) ||
-                const DeepCollectionEquality().equals(other.city, city)));
-  }
-
-  @override
-  int get hashCode =>
-      runtimeType.hashCode ^ const DeepCollectionEquality().hash(city);
-
-  @JsonKey(ignore: true)
-  @override
-  _$reciveCityCopyWith<_reciveCity> get copyWith =>
-      __$reciveCityCopyWithImpl<_reciveCity>(this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(int len, int lat) fetchData,
-    required TResult Function(String city) reciveCity,
-  }) {
-    return reciveCity(city);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(int len, int lat)? fetchData,
-    TResult Function(String city)? reciveCity,
-    required TResult orElse(),
-  }) {
-    if (reciveCity != null) {
-      return reciveCity(city);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_fetchData value) fetchData,
-    required TResult Function(_reciveCity value) reciveCity,
-  }) {
-    return reciveCity(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_fetchData value)? fetchData,
-    TResult Function(_reciveCity value)? reciveCity,
-    required TResult orElse(),
-  }) {
-    if (reciveCity != null) {
-      return reciveCity(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _reciveCity implements WebserviceEvent {
-  const factory _reciveCity({required String city}) = _$_reciveCity;
-
-  String get city => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
-  _$reciveCityCopyWith<_reciveCity> get copyWith =>
+  $NewCoordsCopyWith<NewCoords> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
