@@ -4,6 +4,7 @@ import 'package:smog_app/application/webservice/webservice_bloc.dart';
 import 'package:smog_app/injection.dart';
 import 'package:smog_app/view/Pages/city_failure_page.dart';
 import 'package:smog_app/view/Pages/load_page.dart';
+import 'package:smog_app/view/pages/details_page.dart';
 import 'package:smog_app/view/pages/weather_page.dart';
 import 'package:smog_app/view/search_again_page.dart';
 
@@ -27,6 +28,7 @@ class MyApp extends StatelessWidget {
           '/weather': (context) => WeatherPage(),
           '/error': (context) => CityFailurePage(),
           '/searchAgain': (context) => SearchAgainPage(),
+          '/weather/details': (context) => DetailsPage(),
         },
         initialRoute: '/',
         debugShowCheckedModeBanner: false,

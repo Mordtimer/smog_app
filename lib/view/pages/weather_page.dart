@@ -2,7 +2,6 @@ import 'package:dartz/dartz.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:http/http.dart';
 import 'package:smog_app/application/webservice/webservice_bloc.dart';
 import 'package:smog_app/domain/failure.dart';
 import 'package:smog_app/view/Pages/custom_search.dart';
@@ -116,8 +115,12 @@ class WeatherDetails extends StatelessWidget {
                                 ),
                               ),
                               Expanded(
-                                child: Card(
-                                  color: Colors.amberAccent,
+                                child: GestureDetector(
+                                  onTap: () => Navigator.of(context).pushNamed('/weather/details' ),
+                                  child: Card(
+                                     
+                                    color: Colors.amberAccent,
+                                  ),
                                 ),
                               )
                             ],
