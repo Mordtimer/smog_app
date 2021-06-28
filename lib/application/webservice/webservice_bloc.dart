@@ -14,12 +14,12 @@ part 'webservice_event.dart';
 part 'webservice_state.dart';
 part 'webservice_bloc.freezed.dart';
 
-@singleton
+@lazySingleton
 class WebserviceBloc extends Bloc<WebserviceEvent, WebserviceState> {
   final Webservice _forecastRepository;
   WebserviceBloc(this._forecastRepository) : super(WebserviceState.initial());
   Either<Failure, String> currentForecast = left(Failure());
-  Either<Failure, String> currentCity = right('Miasto');
+  Either<Failure, String> currentCity = right('Miasto1');
   double currentLat = 50;
   double currentLon = 50;
 
@@ -30,21 +30,24 @@ class WebserviceBloc extends Bloc<WebserviceEvent, WebserviceState> {
     yield* event.map(
       fetchData: (e) async* {
         currentCity = right(currentCity.fold((l) => '', (r) => r));
-        final forecast_result =
+        final forecastResult =
             await _forecastRepository.fetchCurrentPollutionData('50', '50');
-        yield forecast_result.fold(
+        yield forecastResult.fold(
             (l) => const WebserviceState.loadFailure(),
             (r) => WebserviceState.dataRecived(
                 pollutionData: r, city: currentCity.fold((l) => '', (r) => r)));
       },
       newCity: (e) async* {
         currentCity = right(e.city);
-        yield WebserviceState.initial();
+        
+        final forecastResult =
+            await _forecastRepository.fetchCurrentPollutionData('50', '50');
+        yield forecastResult.fold(
+            (l) => const WebserviceState.loadFailure(),
+            (r) => WebserviceState.dataRecived(
+                pollutionData: r, city: currentCity.fold((l) => '', (r) => r)));
       },
-      newCoords: (e) async* {
-        currentLat = e.lat;
-        currentLon = e.len;
-      },
+      
     );
   }
 }

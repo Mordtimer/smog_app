@@ -16,6 +16,7 @@ _i1.GetIt $initGetIt(_i1.GetIt get,
     {String? environment, _i2.EnvironmentFilter? environmentFilter}) {
   final gh = _i2.GetItHelper(get, environment, environmentFilter);
   gh.factory<_i3.Webservice>(() => _i3.Webservice());
-  gh.singleton<_i4.WebserviceBloc>(_i4.WebserviceBloc(get<_i3.Webservice>()));
+  gh.lazySingleton<_i4.WebserviceBloc>(
+      () => _i4.WebserviceBloc(get<_i3.Webservice>()));
   return get;
 }

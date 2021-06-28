@@ -25,13 +25,6 @@ class _$WebserviceEventTearOff {
       city: city,
     );
   }
-
-  NewCoords newCoords({required double len, required double lat}) {
-    return NewCoords(
-      len: len,
-      lat: lat,
-    );
-  }
 }
 
 /// @nodoc
@@ -43,14 +36,12 @@ mixin _$WebserviceEvent {
   TResult when<TResult extends Object?>({
     required TResult Function() fetchData,
     required TResult Function(String city) newCity,
-    required TResult Function(double len, double lat) newCoords,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? fetchData,
     TResult Function(String city)? newCity,
-    TResult Function(double len, double lat)? newCoords,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -58,14 +49,12 @@ mixin _$WebserviceEvent {
   TResult map<TResult extends Object?>({
     required TResult Function(FetchData value) fetchData,
     required TResult Function(NewCity value) newCity,
-    required TResult Function(NewCoords value) newCoords,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(FetchData value)? fetchData,
     TResult Function(NewCity value)? newCity,
-    TResult Function(NewCoords value)? newCoords,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -133,7 +122,6 @@ class _$FetchData with DiagnosticableTreeMixin implements FetchData {
   TResult when<TResult extends Object?>({
     required TResult Function() fetchData,
     required TResult Function(String city) newCity,
-    required TResult Function(double len, double lat) newCoords,
   }) {
     return fetchData();
   }
@@ -143,7 +131,6 @@ class _$FetchData with DiagnosticableTreeMixin implements FetchData {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? fetchData,
     TResult Function(String city)? newCity,
-    TResult Function(double len, double lat)? newCoords,
     required TResult orElse(),
   }) {
     if (fetchData != null) {
@@ -157,7 +144,6 @@ class _$FetchData with DiagnosticableTreeMixin implements FetchData {
   TResult map<TResult extends Object?>({
     required TResult Function(FetchData value) fetchData,
     required TResult Function(NewCity value) newCity,
-    required TResult Function(NewCoords value) newCoords,
   }) {
     return fetchData(this);
   }
@@ -167,7 +153,6 @@ class _$FetchData with DiagnosticableTreeMixin implements FetchData {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(FetchData value)? fetchData,
     TResult Function(NewCity value)? newCity,
-    TResult Function(NewCoords value)? newCoords,
     required TResult orElse(),
   }) {
     if (fetchData != null) {
@@ -253,7 +238,6 @@ class _$NewCity with DiagnosticableTreeMixin implements NewCity {
   TResult when<TResult extends Object?>({
     required TResult Function() fetchData,
     required TResult Function(String city) newCity,
-    required TResult Function(double len, double lat) newCoords,
   }) {
     return newCity(city);
   }
@@ -263,7 +247,6 @@ class _$NewCity with DiagnosticableTreeMixin implements NewCity {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? fetchData,
     TResult Function(String city)? newCity,
-    TResult Function(double len, double lat)? newCoords,
     required TResult orElse(),
   }) {
     if (newCity != null) {
@@ -277,7 +260,6 @@ class _$NewCity with DiagnosticableTreeMixin implements NewCity {
   TResult map<TResult extends Object?>({
     required TResult Function(FetchData value) fetchData,
     required TResult Function(NewCity value) newCity,
-    required TResult Function(NewCoords value) newCoords,
   }) {
     return newCity(this);
   }
@@ -287,7 +269,6 @@ class _$NewCity with DiagnosticableTreeMixin implements NewCity {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(FetchData value)? fetchData,
     TResult Function(NewCity value)? newCity,
-    TResult Function(NewCoords value)? newCoords,
     required TResult orElse(),
   }) {
     if (newCity != null) {
@@ -303,145 +284,6 @@ abstract class NewCity implements WebserviceEvent {
   String get city => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   $NewCityCopyWith<NewCity> get copyWith => throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class $NewCoordsCopyWith<$Res> {
-  factory $NewCoordsCopyWith(NewCoords value, $Res Function(NewCoords) then) =
-      _$NewCoordsCopyWithImpl<$Res>;
-  $Res call({double len, double lat});
-}
-
-/// @nodoc
-class _$NewCoordsCopyWithImpl<$Res> extends _$WebserviceEventCopyWithImpl<$Res>
-    implements $NewCoordsCopyWith<$Res> {
-  _$NewCoordsCopyWithImpl(NewCoords _value, $Res Function(NewCoords) _then)
-      : super(_value, (v) => _then(v as NewCoords));
-
-  @override
-  NewCoords get _value => super._value as NewCoords;
-
-  @override
-  $Res call({
-    Object? len = freezed,
-    Object? lat = freezed,
-  }) {
-    return _then(NewCoords(
-      len: len == freezed
-          ? _value.len
-          : len // ignore: cast_nullable_to_non_nullable
-              as double,
-      lat: lat == freezed
-          ? _value.lat
-          : lat // ignore: cast_nullable_to_non_nullable
-              as double,
-    ));
-  }
-}
-
-/// @nodoc
-
-class _$NewCoords with DiagnosticableTreeMixin implements NewCoords {
-  const _$NewCoords({required this.len, required this.lat});
-
-  @override
-  final double len;
-  @override
-  final double lat;
-
-  @override
-  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'WebserviceEvent.newCoords(len: $len, lat: $lat)';
-  }
-
-  @override
-  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-    super.debugFillProperties(properties);
-    properties
-      ..add(DiagnosticsProperty('type', 'WebserviceEvent.newCoords'))
-      ..add(DiagnosticsProperty('len', len))
-      ..add(DiagnosticsProperty('lat', lat));
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other is NewCoords &&
-            (identical(other.len, len) ||
-                const DeepCollectionEquality().equals(other.len, len)) &&
-            (identical(other.lat, lat) ||
-                const DeepCollectionEquality().equals(other.lat, lat)));
-  }
-
-  @override
-  int get hashCode =>
-      runtimeType.hashCode ^
-      const DeepCollectionEquality().hash(len) ^
-      const DeepCollectionEquality().hash(lat);
-
-  @JsonKey(ignore: true)
-  @override
-  $NewCoordsCopyWith<NewCoords> get copyWith =>
-      _$NewCoordsCopyWithImpl<NewCoords>(this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() fetchData,
-    required TResult Function(String city) newCity,
-    required TResult Function(double len, double lat) newCoords,
-  }) {
-    return newCoords(len, lat);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? fetchData,
-    TResult Function(String city)? newCity,
-    TResult Function(double len, double lat)? newCoords,
-    required TResult orElse(),
-  }) {
-    if (newCoords != null) {
-      return newCoords(len, lat);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(FetchData value) fetchData,
-    required TResult Function(NewCity value) newCity,
-    required TResult Function(NewCoords value) newCoords,
-  }) {
-    return newCoords(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(FetchData value)? fetchData,
-    TResult Function(NewCity value)? newCity,
-    TResult Function(NewCoords value)? newCoords,
-    required TResult orElse(),
-  }) {
-    if (newCoords != null) {
-      return newCoords(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class NewCoords implements WebserviceEvent {
-  const factory NewCoords({required double len, required double lat}) =
-      _$NewCoords;
-
-  double get len => throw _privateConstructorUsedError;
-  double get lat => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
-  $NewCoordsCopyWith<NewCoords> get copyWith =>
-      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
