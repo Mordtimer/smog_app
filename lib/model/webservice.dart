@@ -10,19 +10,34 @@ import 'package:smog_app/model/pollution_data_model.dart';
 @injectable
 class Webservice {
   @factoryMethod
-  Future<Either<Failure, PollutionData>> fetchCurrentPollutionData(String lat, String lon) async {
+  Future<Either<Failure, PollutionData>> fetchCurrentPollutionData(String cityName) async {
     await dotenv.load(fileName: "assets/keys.env");
-    // lat = 50, lon = 50 test
-    Uri request = Uri.parse('https://api.openweathermap.org/data/2.5/air_pollution?lat=50&lon=50&appid=${dotenv.env['API_KEY']}');
-    // Uri request = Uri.parse('https://api.openweathermap.org/data/2.5/weather?q=$keyword,pl&APPID=${DotEnv.env['API_KEY']}');
-    final response = await http.get(request);
-    try{
-      if(response.statusCode != 200){
-      return left(Failure());
-    } else 
-    return right(PollutionData.fromJson(jsonDecode(response.body)));
+    
+    try {
+      final geoResponse = await http.get(Uri.https('api.openweathermap.org', '/geo/1.0/direct', {
+        "q": cityName,
+        "appid": dotenv.env['API_KEY']
+      }));
+
+      final Map latLon = jsonDecode(geoResponse.body)[0];
+
+      if(latLon.isEmpty) {
+        return left(Failure(message: 'City not found'));
+      }
+
+      final pollutionResponse = await http.get(Uri.https('api.openweathermap.org', '/data/2.5/air_pollution', {
+        "lat": latLon['lat'].toString(),
+        "lon": latLon['lon'].toString(),
+        "appid": dotenv.env['API_KEY']
+      }));
+
+      if(pollutionResponse.statusCode > 300) {
+        return left(Failure(message: pollutionResponse.body));
+      }
+
+      return right(PollutionData.fromJson(jsonDecode(pollutionResponse.body)));
     } catch (e) {
-      return left(Failure());
+      return left(Failure(message: e.toString()));      
     }
  
   }

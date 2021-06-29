@@ -19,7 +19,7 @@ class WebserviceBloc extends Bloc<WebserviceEvent, WebserviceState> {
   final Webservice _forecastRepository;
   WebserviceBloc(this._forecastRepository) : super(WebserviceState.initial());
   Either<Failure, String> currentForecast = left(Failure());
-  Either<Failure, String> currentCity = right('Miasto1');
+  Either<Failure, String> currentCity = right('Gliwice');
   double currentLat = 50;
   double currentLon = 50;
 
@@ -29,9 +29,13 @@ class WebserviceBloc extends Bloc<WebserviceEvent, WebserviceState> {
   ) async* {
     yield* event.map(
       fetchData: (e) async* {
-        currentCity = right(currentCity.fold((l) => '', (r) => r));
+        var city = '';
+        yield currentCity.fold((l) => const WebserviceState.invalidCity(), (r) {city = r; return WebserviceState.loadInProgress();});
+
         final forecastResult =
-            await _forecastRepository.fetchCurrentPollutionData('50', '50');
+            await _forecastRepository.fetchCurrentPollutionData(city);
+
+
         yield forecastResult.fold(
             (l) => const WebserviceState.loadFailure(),
             (r) => WebserviceState.dataRecived(
@@ -39,9 +43,12 @@ class WebserviceBloc extends Bloc<WebserviceEvent, WebserviceState> {
       },
       newCity: (e) async* {
         currentCity = right(e.city);
+        var city = '';
+        currentCity.fold((l) => const WebserviceState.invalidCity(), (r) {city = r; return WebserviceState.loadInProgress();});
         
         final forecastResult =
-            await _forecastRepository.fetchCurrentPollutionData('50', '50');
+            await _forecastRepository.fetchCurrentPollutionData(city);
+
         yield forecastResult.fold(
             (l) => const WebserviceState.loadFailure(),
             (r) => WebserviceState.dataRecived(

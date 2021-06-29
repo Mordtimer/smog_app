@@ -15,8 +15,8 @@ class PollutionData {
 }
 
 class Coord {
-  final int longitude;
-  final int latitude;
+  final double longitude;
+  final double latitude;
 
   Coord({required this.longitude, required this.latitude});
 
