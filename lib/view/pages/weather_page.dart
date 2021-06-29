@@ -17,7 +17,7 @@ class WeatherPage extends StatelessWidget {
           centerTitle: true,
           leading: IconButton(
             // TODO: Menu button to implement here
-            icon: Icon(Icons.menu),
+            icon: Icon(Icons.arrow_back),
             onPressed: () {
               // Here will be some menu actions stuff
             },
