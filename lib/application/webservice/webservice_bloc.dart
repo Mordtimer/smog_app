@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:convert';
 
 import 'package:bloc/bloc.dart';
 import 'package:dartz/dartz.dart';
@@ -22,6 +23,33 @@ class WebserviceBloc extends Bloc<WebserviceEvent, WebserviceState> {
   Either<Failure, String> currentCity = right('Miasto1');
   double currentLat = 50;
   double currentLon = 50;
+  // todo: delete this and bind it to actual value
+  final Either<Failure, PollutionData> pollutionData = right(PollutionData.fromJson(jsonDecode('''{
+    "coord": {
+        "lon": 18.6766,
+        "lat": 50.2976
+    },
+    "list": [
+        {
+            "main": {
+                "aqi": 2
+            },
+            "components": {
+                "co": 155.21,
+                "no": 0.08,
+                "no2": 0.72,
+                "o3": 94.41,
+                "so2": 1.54,
+                "pm2_5": 2.92,
+                "pm10": 3.53,
+                "nh3": 1.14
+            },
+            "dt": 1625396400
+        }
+    ]
+}''')));
+  // delete this
+
 
   @override
   Stream<WebserviceState> mapEventToState(
@@ -30,7 +58,7 @@ class WebserviceBloc extends Bloc<WebserviceEvent, WebserviceState> {
     yield* event.map(
       fetchData: (e) async* {
         currentCity = right(currentCity.fold((l) => '', (r) => r));
-        final forecastResult =
+        final forecastResult = 
             await _forecastRepository.fetchCurrentPollutionData('50', '50');
         yield forecastResult.fold(
             (l) => const WebserviceState.loadFailure(),

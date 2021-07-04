@@ -41,7 +41,8 @@ class WeatherPage extends StatelessWidget {
                   context
                       .read<WebserviceBloc>()
                       .add(WebserviceEvent.newCity(city: r));
-                      Navigator.pushNamedAndRemoveUntil(context, '/', (route) => false);
+                  Navigator.pushNamedAndRemoveUntil(
+                      context, '/', (route) => false);
                 });
               },
             ),
@@ -93,13 +94,59 @@ class WeatherDetails extends StatelessWidget {
                             children: [
                               Expanded(
                                 child: Card(
-                                  color: Colors.amberAccent,
-                                ),
+                                    color: Colors.amberAccent,
+                                    child: Column(
+                                      children: [
+                                        Text("Carbon Monoxide (μg/m^3)",
+                                            textAlign: TextAlign.center,
+                                            style: Theme.of(context)
+                                                .primaryTextTheme
+                                                .headline5),
+                                        Text(
+                                            context
+                                                .read<WebserviceBloc>()
+                                                .pollutionData
+                                                .fold(
+                                                    (l) => '',
+                                                    (r) => r
+                                                        .data[0].components.co
+                                                        .toString()),
+                                            textAlign: TextAlign.center,
+                                            style: Theme.of(context)
+                                                .primaryTextTheme
+                                                .headline1),
+                                      ],
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
+                                    )),
                               ),
                               Expanded(
                                 child: Card(
-                                  color: Colors.amberAccent,
-                                ),
+                                    color: Colors.amberAccent,
+                                    child: Column(
+                                      children: [
+                                        Text("Fine particles matter (μg/m^3)",
+                                            textAlign: TextAlign.center,
+                                            style: Theme.of(context)
+                                                .primaryTextTheme
+                                                .headline5),
+                                        Text(
+                                            context
+                                                .read<WebserviceBloc>()
+                                                .pollutionData
+                                                .fold(
+                                                    (l) => '',
+                                                    (r) => r
+                                                        .data[0].components.pm25
+                                                        .toString()),
+                                            textAlign: TextAlign.center,
+                                            style: Theme.of(context)
+                                                .primaryTextTheme
+                                                .headline1),
+                                      ],
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
+                                    )),
                               )
                             ],
                           ),
@@ -111,16 +158,62 @@ class WeatherDetails extends StatelessWidget {
                             children: [
                               Expanded(
                                 child: Card(
-                                  color: Colors.amberAccent,
-                                ),
+                                    color: Colors.amberAccent,
+                                    child: Column(
+                                      children: [
+                                        Text("Nitrogen dioxide (μg/m^3)",
+                                            textAlign: TextAlign.center,
+                                            style: Theme.of(context)
+                                                .primaryTextTheme
+                                                .headline5),
+                                        Text(
+                                            context
+                                                .read<WebserviceBloc>()
+                                                .pollutionData
+                                                .fold(
+                                                    (l) => '',
+                                                    (r) => r
+                                                        .data[0].components.co
+                                                        .toString()),
+                                            textAlign: TextAlign.center,
+                                            style: Theme.of(context)
+                                                .primaryTextTheme
+                                                .headline1),
+                                      ],
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
+                                    )),
                               ),
                               Expanded(
                                 child: GestureDetector(
-                                  onTap: () => Navigator.of(context).pushNamed('/weather/details' ),
+                                  onTap: () => Navigator.of(context)
+                                      .pushNamed('/weather/details'),
                                   child: Card(
-                                     
-                                    color: Colors.amberAccent,
-                                  ),
+                                      color: Colors.amberAccent,
+                                      child: Column(
+                                        children: [
+                                          Text("Dulphur Dioxide (μg/m^3)",
+                                              textAlign: TextAlign.center,
+                                              style: Theme.of(context)
+                                                  .primaryTextTheme
+                                                  .headline5),
+                                          Text(
+                                              context
+                                                  .read<WebserviceBloc>()
+                                                  .pollutionData
+                                                  .fold(
+                                                      (l) => '',
+                                                      (r) => r.data[0]
+                                                          .components.so2
+                                                          .toString()),
+                                              textAlign: TextAlign.center,
+                                              style: Theme.of(context)
+                                                  .primaryTextTheme
+                                                  .headline1),
+                                        ],
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.center,
+                                      )),
                                 ),
                               )
                             ],
