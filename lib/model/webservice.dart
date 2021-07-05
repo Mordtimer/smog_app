@@ -11,7 +11,7 @@ import 'package:smog_app/model/pollution_data_model.dart';
 class Webservice {
   @factoryMethod
   Future<Either<Failure, PollutionData>> fetchCurrentPollutionData(String cityName) async {
-    await dotenv.load(fileName: "assets/keys.env");
+    await dotenv.load(fileName: "keys.env");
     
     try {
       final geoResponse = await http.get(Uri.https('api.openweathermap.org', '/geo/1.0/direct', {

@@ -41,7 +41,8 @@ class WeatherPage extends StatelessWidget {
                   context
                       .read<WebserviceBloc>()
                       .add(WebserviceEvent.newCity(city: r));
-                      Navigator.pushNamedAndRemoveUntil(context, '/', (route) => false);
+                  Navigator.pushNamedAndRemoveUntil(
+                      context, '/', (route) => false);
                 });
               },
             ),
@@ -94,11 +95,57 @@ class WeatherDetails extends StatelessWidget {
                               Expanded(
                                 child: Card(
                                   color: Colors.amberAccent,
+                                  child: Column(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      Text("Nitrogen dioxide\n (μg/m^3)",
+                                          textAlign: TextAlign.center,
+                                          style: Theme.of(context)
+                                              .primaryTextTheme
+                                              .bodyText1),
+                                      Text(
+                                          context
+                                              .read<WebserviceBloc>()
+                                              .currentForecast
+                                              .fold(
+                                                (l) => l.message,
+                                                (r) => r.data[0].components.so2
+                                                    .toString(),
+                                              ),
+                                          textAlign: TextAlign.center,
+                                          style: Theme.of(context)
+                                              .primaryTextTheme
+                                              .headline4),
+                                    ],
+                                  ),
                                 ),
                               ),
                               Expanded(
                                 child: Card(
-                                  color: Colors.amberAccent,
+                                 color: Colors.amberAccent,
+                                  child: Column(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      Text("Carbon Monoxide\n (μg/m^3)",
+                                          textAlign: TextAlign.center,
+                                          style: Theme.of(context)
+                                              .primaryTextTheme
+                                              .bodyText1),
+                                      Text(
+                                          context
+                                              .read<WebserviceBloc>()
+                                              .currentForecast
+                                              .fold(
+                                                (l) => l.message,
+                                                (r) => r.data[0].components.co
+                                                    .toString(),
+                                              ),
+                                          textAlign: TextAlign.center,
+                                          style: Theme.of(context)
+                                              .primaryTextTheme
+                                              .headline4),
+                                    ],
+                                  ),
                                 ),
                               )
                             ],
@@ -112,14 +159,38 @@ class WeatherDetails extends StatelessWidget {
                               Expanded(
                                 child: Card(
                                   color: Colors.amberAccent,
+                                  child: Column(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      Text("Fine particles matter\n (μg/m^3)",
+                                          textAlign: TextAlign.center,
+                                          style: Theme.of(context)
+                                              .primaryTextTheme
+                                              .bodyText1),
+                                      Text(
+                                          context
+                                              .read<WebserviceBloc>()
+                                              .currentForecast
+                                              .fold(
+                                                (l) => l.message,
+                                                (r) => r.data[0].components.pm25
+                                                    .toString(),
+                                              ),
+                                          textAlign: TextAlign.center,
+                                          style: Theme.of(context)
+                                              .primaryTextTheme
+                                              .headline4),
+                                    ],
+                                  ),
                                 ),
                               ),
                               Expanded(
                                 child: GestureDetector(
-                                  onTap: () => Navigator.of(context).pushNamed('/weather/details' ),
+                                  onTap: () => Navigator.of(context)
+                                      .pushNamed('/weather/details'),
                                   child: Card(
-                                     
                                     color: Colors.amberAccent,
+                                    child: Icon(CupertinoIcons.arrow_right, size: 30, color: Colors.white,),
                                   ),
                                 ),
                               )

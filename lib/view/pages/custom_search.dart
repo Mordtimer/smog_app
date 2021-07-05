@@ -5,7 +5,7 @@ import 'package:smog_app/domain/failure.dart';
 class CustomSearch extends SearchDelegate {
   List<String> listExample = [];
   List<String> recentList = [];
-  Either<Failure, String> result = left(Failure());
+  Either<Failure, String> result = left(Failure(message: 'Initial custom search state'));
 
   CustomSearch(this.recentList, this.listExample);
   @override

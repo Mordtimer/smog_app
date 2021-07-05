@@ -18,7 +18,8 @@ part 'webservice_bloc.freezed.dart';
 class WebserviceBloc extends Bloc<WebserviceEvent, WebserviceState> {
   final Webservice _forecastRepository;
   WebserviceBloc(this._forecastRepository) : super(WebserviceState.initial());
-  Either<Failure, String> currentForecast = left(Failure());
+  Either<Failure, PollutionData> currentForecast =
+      left(Failure(message: 'Initial State'));
   Either<Failure, String> currentCity = right('Gliwice');
   double currentLat = 50;
   double currentLon = 50;
@@ -30,22 +31,26 @@ class WebserviceBloc extends Bloc<WebserviceEvent, WebserviceState> {
     yield* event.map(
       fetchData: (e) async* {
         var city = '';
-        yield currentCity.fold((l) => const WebserviceState.invalidCity(), (r) {city = r; return WebserviceState.loadInProgress();});
+        yield currentCity.fold((l) => const WebserviceState.invalidCity(), (r) {
+          city = r;
+          return const WebserviceState.loadInProgress();
+        });
 
         final forecastResult =
             await _forecastRepository.fetchCurrentPollutionData(city);
 
-
-        yield forecastResult.fold(
-            (l) => const WebserviceState.loadFailure(),
-            (r) => WebserviceState.dataRecived(
-                pollutionData: r, city: currentCity.fold((l) => '', (r) => r)));
+        yield forecastResult.fold((l) => const WebserviceState.loadFailure(),
+            (r) => WebserviceState.dataRecived(pollutionData: r, city: city));
+        currentForecast = forecastResult;
       },
       newCity: (e) async* {
         currentCity = right(e.city);
         var city = '';
-        currentCity.fold((l) => const WebserviceState.invalidCity(), (r) {city = r; return WebserviceState.loadInProgress();});
-        
+        currentCity.fold((l) => const WebserviceState.invalidCity(), (r) {
+          city = r;
+          return WebserviceState.loadInProgress();
+        });
+
         final forecastResult =
             await _forecastRepository.fetchCurrentPollutionData(city);
 
@@ -53,8 +58,8 @@ class WebserviceBloc extends Bloc<WebserviceEvent, WebserviceState> {
             (l) => const WebserviceState.loadFailure(),
             (r) => WebserviceState.dataRecived(
                 pollutionData: r, city: currentCity.fold((l) => '', (r) => r)));
+        currentForecast = forecastResult;
       },
-      
     );
   }
 }
