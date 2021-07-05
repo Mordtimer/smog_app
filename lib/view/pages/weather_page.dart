@@ -2,8 +2,10 @@ import 'package:dartz/dartz.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:smog_app/application/cubit/plot_cubit.dart';
 import 'package:smog_app/application/webservice/webservice_bloc.dart';
 import 'package:smog_app/domain/failure.dart';
+import 'package:smog_app/injection.dart';
 import 'package:smog_app/view/Pages/custom_search.dart';
 
 class WeatherPage extends StatelessWidget {
@@ -17,7 +19,7 @@ class WeatherPage extends StatelessWidget {
           centerTitle: true,
           leading: IconButton(
             // TODO: Menu button to implement here
-            icon: Icon(Icons.menu),
+            icon: Icon(CupertinoIcons.settings),
             onPressed: () {
               // Here will be some menu actions stuff
             },
@@ -32,7 +34,7 @@ class WeatherPage extends StatelessWidget {
           actions: [
             IconButton(
               // Search button
-              icon: const Icon(Icons.search),
+              icon: const Icon(CupertinoIcons.search),
               onPressed: () async {
                 Either<Failure, String> searchResult = await showSearch(
                     context: context,
@@ -47,7 +49,10 @@ class WeatherPage extends StatelessWidget {
               },
             ),
           ]),
-      body: WeatherDetails(),
+      body: BlocProvider(
+        create: (context) => getIt<PlotCubit>(),
+        child: WeatherDetails(),
+      ),
     );
   }
 }
@@ -67,11 +72,17 @@ class WeatherDetails extends StatelessWidget {
               Expanded(flex: 1, child: Container()),
               Expanded(
                   flex: 8,
-                  child: Padding(
-                    padding: const EdgeInsets.symmetric(vertical: 32),
-                    child: Container(
-                      color: Colors.tealAccent,
-                    ),
+                  child: BlocBuilder<PlotCubit, PlotState>(
+                    builder: (context, state) {
+                      return Padding(
+                        padding: const EdgeInsets.symmetric(vertical: 32),
+                        child: Container(
+                          color: Colors.tealAccent,
+                          child: Text(
+                              context.read<PlotCubit>().state.currentComponent),
+                        ),
+                      );
+                    },
                   )),
               Expanded(flex: 1, child: Container()),
             ],
@@ -93,58 +104,65 @@ class WeatherDetails extends StatelessWidget {
                             crossAxisAlignment: CrossAxisAlignment.stretch,
                             children: [
                               Expanded(
-                                child: Card(
-                                  color: Colors.amberAccent,
-                                  child: Column(
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    children: [
-                                      Text("Nitrogen dioxide\n (μg/m^3)",
-                                          textAlign: TextAlign.center,
-                                          style: Theme.of(context)
-                                              .primaryTextTheme
-                                              .bodyText1),
-                                      Text(
-                                          context
-                                              .read<WebserviceBloc>()
-                                              .currentForecast
-                                              .fold(
-                                                (l) => l.message,
-                                                (r) => r.data[0].components.so2
-                                                    .toString(),
-                                              ),
-                                          textAlign: TextAlign.center,
-                                          style: Theme.of(context)
-                                              .primaryTextTheme
-                                              .headline4),
-                                    ],
+                                child: GestureDetector(
+                                  onTap: () => context.read<PlotCubit>().changeCurrentComponent('NO2'),
+                                  child: Card(
+                                    
+                                    color: Colors.amberAccent,
+                                    child: Column(
+                                      mainAxisAlignment: MainAxisAlignment.center,
+                                      children: [
+                                        Text("Nitrogen dioxide\n (μg/m^3)",
+                                            textAlign: TextAlign.center,
+                                            style: Theme.of(context)
+                                                .primaryTextTheme
+                                                .bodyText1),
+                                        Text(
+                                            context
+                                                .read<WebserviceBloc>()
+                                                .currentForecast
+                                                .fold(
+                                                  (l) => l.message,
+                                                  (r) => r.data[0].components.so2
+                                                      .toString(),
+                                                ),
+                                            textAlign: TextAlign.center,
+                                            style: Theme.of(context)
+                                                .primaryTextTheme
+                                                .headline4),
+                                      ],
+                                    ),
                                   ),
                                 ),
                               ),
                               Expanded(
-                                child: Card(
-                                 color: Colors.amberAccent,
-                                  child: Column(
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    children: [
-                                      Text("Carbon Monoxide\n (μg/m^3)",
-                                          textAlign: TextAlign.center,
-                                          style: Theme.of(context)
-                                              .primaryTextTheme
-                                              .bodyText1),
-                                      Text(
-                                          context
-                                              .read<WebserviceBloc>()
-                                              .currentForecast
-                                              .fold(
-                                                (l) => l.message,
-                                                (r) => r.data[0].components.co
-                                                    .toString(),
-                                              ),
-                                          textAlign: TextAlign.center,
-                                          style: Theme.of(context)
-                                              .primaryTextTheme
-                                              .headline4),
-                                    ],
+                                child: GestureDetector(
+                                  onTap: () => context.read<PlotCubit>().changeCurrentComponent('CO'),
+                                  child: Card(
+                                    color: Colors.amberAccent,
+                                    child: Column(
+                                      mainAxisAlignment: MainAxisAlignment.center,
+                                      children: [
+                                        Text("Carbon Monoxide\n (μg/m^3)",
+                                            textAlign: TextAlign.center,
+                                            style: Theme.of(context)
+                                                .primaryTextTheme
+                                                .bodyText1),
+                                        Text(
+                                            context
+                                                .read<WebserviceBloc>()
+                                                .currentForecast
+                                                .fold(
+                                                  (l) => l.message,
+                                                  (r) => r.data[0].components.co
+                                                      .toString(),
+                                                ),
+                                            textAlign: TextAlign.center,
+                                            style: Theme.of(context)
+                                                .primaryTextTheme
+                                                .headline4),
+                                      ],
+                                    ),
                                   ),
                                 ),
                               )
@@ -157,30 +175,33 @@ class WeatherDetails extends StatelessWidget {
                             crossAxisAlignment: CrossAxisAlignment.stretch,
                             children: [
                               Expanded(
-                                child: Card(
-                                  color: Colors.amberAccent,
-                                  child: Column(
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    children: [
-                                      Text("Fine particles matter\n (μg/m^3)",
-                                          textAlign: TextAlign.center,
-                                          style: Theme.of(context)
-                                              .primaryTextTheme
-                                              .bodyText1),
-                                      Text(
-                                          context
-                                              .read<WebserviceBloc>()
-                                              .currentForecast
-                                              .fold(
-                                                (l) => l.message,
-                                                (r) => r.data[0].components.pm25
-                                                    .toString(),
-                                              ),
-                                          textAlign: TextAlign.center,
-                                          style: Theme.of(context)
-                                              .primaryTextTheme
-                                              .headline4),
-                                    ],
+                                child: GestureDetector(
+                                  onTap: () => context.read<PlotCubit>().changeCurrentComponent('PM25'),
+                                  child: Card(
+                                    color: Colors.amberAccent,
+                                    child: Column(
+                                      mainAxisAlignment: MainAxisAlignment.center,
+                                      children: [
+                                        Text("Fine particles matter\n (μg/m^3)",
+                                            textAlign: TextAlign.center,
+                                            style: Theme.of(context)
+                                                .primaryTextTheme
+                                                .bodyText1),
+                                        Text(
+                                            context
+                                                .read<WebserviceBloc>()
+                                                .currentForecast
+                                                .fold(
+                                                  (l) => l.message,
+                                                  (r) => r.data[0].components.pm25
+                                                      .toString(),
+                                                ),
+                                            textAlign: TextAlign.center,
+                                            style: Theme.of(context)
+                                                .primaryTextTheme
+                                                .headline4),
+                                      ],
+                                    ),
                                   ),
                                 ),
                               ),
@@ -190,7 +211,11 @@ class WeatherDetails extends StatelessWidget {
                                       .pushNamed('/weather/details'),
                                   child: Card(
                                     color: Colors.amberAccent,
-                                    child: Icon(CupertinoIcons.arrow_right, size: 30, color: Colors.white,),
+                                    child: Icon(
+                                      CupertinoIcons.arrow_right,
+                                      size: 30,
+                                      color: Colors.white,
+                                    ),
                                   ),
                                 ),
                               )

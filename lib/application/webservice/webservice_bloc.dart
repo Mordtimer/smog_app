@@ -31,7 +31,9 @@ class WebserviceBloc extends Bloc<WebserviceEvent, WebserviceState> {
     yield* event.map(
       fetchData: (e) async* {
         var city = '';
-        yield currentCity.fold((l) => const WebserviceState.invalidCity(), (r) {
+        yield currentCity.fold((l) {
+          return const WebserviceState.invalidCity();
+          }, (r) {
           city = r;
           return const WebserviceState.loadInProgress();
         });

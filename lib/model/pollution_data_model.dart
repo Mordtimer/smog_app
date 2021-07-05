@@ -64,6 +64,9 @@ class Components {
   final pm10;
   final nh3;
 
+  List<dynamic> get compList => [co.toString(), no.toString(), no2.toString(), o3.toString(), so2.toString(), pm25.toString(), pm10.toString(), nh3.toString()];
+  List<dynamic> get compNameList => ['CO', 'NO', 'NO2', 'O3', 'SO2', 'PM25', 'PM10', 'NH3'];
+
   Components({
     @required this.co,
     @required this.no,
