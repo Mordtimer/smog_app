@@ -2,12 +2,14 @@ import 'package:dartz/dartz.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:provider/src/provider.dart';
 import 'package:smog_app/application/cubit/plot_cubit.dart';
 import 'package:smog_app/application/webservice/webservice_bloc.dart';
+import 'package:smog_app/domain/components.dart';
 import 'package:smog_app/domain/failure.dart';
+import 'package:smog_app/view/pages/weather_page.dart';
 
 import '../../injection.dart';
+import '../chart_widget.dart';
 import 'custom_search.dart';
 
 class DetailsPage extends StatelessWidget {
@@ -66,29 +68,18 @@ class DetailsWidget extends StatelessWidget {
     return Column(
       children: [
         Expanded(
+          flex: 2,
           child: Row(
             children: <Widget>[
-              Expanded(flex: 1, child: Container()),
               Expanded(
-                  flex: 8,
                   child: Padding(
-                    padding: const EdgeInsets.symmetric(vertical: 32),
-                    child: BlocBuilder<PlotCubit, PlotState>(
-                      builder: (context, state) {
-                        return Container(
-                            color: Colors.red,
-                            child: Text(context
-                                .read<PlotCubit>()
-                                .state
-                                .currentComponent));
-                      },
-                    ),
-                  )),
-              Expanded(flex: 1, child: Container()),
+                      padding: const EdgeInsets.symmetric(vertical: 32, horizontal: 4),
+                      child: ChartWidget())),
             ],
           ),
         ),
         Expanded(
+            flex: 1,
             child: ListView.builder(
                 itemCount: context.read<WebserviceBloc>().currentForecast.fold(
                     (l) => 0, (r) => r.data[0].components.compList.length),
@@ -100,40 +91,49 @@ class DetailsWidget extends StatelessWidget {
                             .read<WebserviceBloc>()
                             .currentForecast
                             .fold(
-                                (l) => '',
+                                (l) => ComponentType.o3,
                                 (r) =>
-                                    r.data[0].components.compNameList[index])),
+                                    r.data[0].components.compTypeList[index])),
                     child: Padding(
                       padding: const EdgeInsets.all(2.0),
                       child: Container(
                         height: 50,
-                        color: Colors.red,
+                        color: Theme.of(context).primaryColor,
                         child: Row(
                           children: [
                             Expanded(
                               flex: 3,
                               child: Padding(
                                 padding: const EdgeInsets.fromLTRB(16, 0, 0, 0),
-                                child: Text(context
-                                    .read<WebserviceBloc>()
-                                    .currentForecast
-                                    .fold(
-                                        (l) => '',
-                                        (r) => r.data[0].components
-                                            .compNameList[index])),
+                                child: Text(
+                                    context
+                                        .read<WebserviceBloc>()
+                                        .currentForecast
+                                        .fold(
+                                            (l) => '',
+                                            (r) => r.data[0].components
+                                                .compNameList[index]),
+                                    style: Theme.of(context)
+                                        .primaryTextTheme
+                                        .bodyText1),
                               ),
                             ),
                             Expanded(
                               flex: 1,
                               child: Padding(
                                 padding: const EdgeInsets.fromLTRB(0, 0, 8, 0),
-                                child: Text(context
-                                    .read<WebserviceBloc>()
-                                    .currentForecast
-                                    .fold(
-                                        (l) => 'No Data',
-                                        (r) => r.data[0].components
-                                            .compList[index])),
+                                child: Text(
+                                  context
+                                      .read<WebserviceBloc>()
+                                      .currentForecast
+                                      .fold(
+                                          (l) => 'No Data',
+                                          (r) => r.data[0].components
+                                              .compList[index]),
+                                  style: Theme.of(context)
+                                      .primaryTextTheme
+                                      .bodyText1,
+                                ),
                               ),
                             ),
                           ],

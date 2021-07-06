@@ -1,4 +1,5 @@
 import 'package:flutter/cupertino.dart';
+import 'package:smog_app/domain/components.dart';
 
 class PollutionData {
   final Coord coord;
@@ -29,6 +30,9 @@ class Data {
   final int unixTime;
   final AirQualIndex airQualIndex;
   final Components components;
+
+  DateTime get time =>
+      DateTime.fromMillisecondsSinceEpoch(this.unixTime * 1000);
 
   Data({
     required this.unixTime,
@@ -64,8 +68,42 @@ class Components {
   final pm10;
   final nh3;
 
-  List<dynamic> get compList => [co.toString(), no.toString(), no2.toString(), o3.toString(), so2.toString(), pm25.toString(), pm10.toString(), nh3.toString()];
-  List<dynamic> get compNameList => ['CO', 'NO', 'NO2', 'O3', 'SO2', 'PM25', 'PM10', 'NH3'];
+  double getComponent(ComponentType comp) {
+    switch (comp) {
+      case ComponentType.co:
+        return double.parse(co.toString());
+      case ComponentType.no:
+        return double.parse(no.toString());
+      case ComponentType.no2:
+        return double.parse(no2.toString());
+      case ComponentType.o3:
+        return double.parse(o3.toString());
+      case ComponentType.so2:
+        return double.parse(so2.toString());
+      case ComponentType.pm25:
+        return double.parse(pm25.toString());
+      case ComponentType.pm10:
+        return double.parse(pm10.toString());
+      case ComponentType.nh3:
+        return double.parse(nh3.toString());
+    }
+  }
+
+  List<dynamic> get compList => [
+        co.toString(),
+        no.toString(),
+        no2.toString(),
+        o3.toString(),
+        so2.toString(),
+        pm25.toString(),
+        pm10.toString(),
+        nh3.toString()
+      ];
+  List<String> get compNameList =>
+      ['CO', 'NO', 'NO2', 'O3', 'SO2', 'PM25', 'PM10', 'NH3'];
+
+  List<ComponentType> get compTypeList =>
+      [ComponentType.co, ComponentType.no, ComponentType.no2, ComponentType.o3, ComponentType.so2, ComponentType.pm25, ComponentType.pm10, ComponentType.nh3];
 
   Components({
     @required this.co,
@@ -76,7 +114,7 @@ class Components {
     @required this.pm25,
     @required this.pm10,
     @required this.nh3,
-  }); 
+  });
 
   factory Components.fromJson(Map<String, dynamic> json) {
     return (Components(
@@ -84,9 +122,30 @@ class Components {
         no: json['no'],
         no2: json['no2'],
         o3: json['o3'],
-        so2: json['so2'] ,
+        so2: json['so2'],
         pm25: json['pm2_5'],
         pm10: json['pm10'],
         nh3: json['nh3']));
+  }
+}
+
+class HistoricalPollutionData {
+  final Coord coord;
+  final List<Data> data;
+  List<Data> get lastWeek {
+    List<Data> tmp = [];
+    for (int i = data.length - 1; i > data.length - 7; i--) {
+      tmp.add(data[i]);
+    }
+    return tmp;
+  }
+
+  HistoricalPollutionData({required this.coord, required this.data});
+
+  factory HistoricalPollutionData.fromJson(Map<String, dynamic> json) {
+    var pollutionList = json['list'] as List;
+    return HistoricalPollutionData(
+        coord: Coord.fromJson(json['coord']),
+        data: pollutionList.map((e) => Data.fromJson(e)).toList());
   }
 }

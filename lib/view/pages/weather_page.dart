@@ -4,9 +4,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:smog_app/application/cubit/plot_cubit.dart';
 import 'package:smog_app/application/webservice/webservice_bloc.dart';
+import 'package:smog_app/domain/components.dart';
 import 'package:smog_app/domain/failure.dart';
 import 'package:smog_app/injection.dart';
+import 'package:smog_app/model/pollution_data_model.dart';
 import 'package:smog_app/view/Pages/custom_search.dart';
+import 'package:syncfusion_flutter_charts/charts.dart';
+
+import '../chart_widget.dart';
 
 class WeatherPage extends StatelessWidget {
   List<String> get allCities => ["Miasto 1", "Miasto 2", "Miasto 3"];
@@ -70,20 +75,7 @@ class WeatherDetails extends StatelessWidget {
           child: Row(
             children: <Widget>[
               Expanded(flex: 1, child: Container()),
-              Expanded(
-                  flex: 8,
-                  child: BlocBuilder<PlotCubit, PlotState>(
-                    builder: (context, state) {
-                      return Padding(
-                        padding: const EdgeInsets.symmetric(vertical: 32),
-                        child: Container(
-                          color: Colors.tealAccent,
-                          child: Text(
-                              context.read<PlotCubit>().state.currentComponent),
-                        ),
-                      );
-                    },
-                  )),
+              Expanded(flex: 8, child: ChartWidget()),
               Expanded(flex: 1, child: Container()),
             ],
           ),
@@ -105,31 +97,41 @@ class WeatherDetails extends StatelessWidget {
                             children: [
                               Expanded(
                                 child: GestureDetector(
-                                  onTap: () => context.read<PlotCubit>().changeCurrentComponent('NO2'),
+                                  onTap: () => context
+                                      .read<PlotCubit>()
+                                      .changeCurrentComponent(
+                                          ComponentType.no2),
                                   child: Card(
-                                    
-                                    color: Colors.amberAccent,
+                                    color: Theme.of(context).primaryColor,
                                     child: Column(
-                                      mainAxisAlignment: MainAxisAlignment.center,
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
                                       children: [
-                                        Text("Nitrogen dioxide\n (μg/m^3)",
-                                            textAlign: TextAlign.center,
-                                            style: Theme.of(context)
-                                                .primaryTextTheme
-                                                .bodyText1),
-                                        Text(
-                                            context
-                                                .read<WebserviceBloc>()
-                                                .currentForecast
-                                                .fold(
-                                                  (l) => l.message,
-                                                  (r) => r.data[0].components.so2
-                                                      .toString(),
-                                                ),
-                                            textAlign: TextAlign.center,
-                                            style: Theme.of(context)
-                                                .primaryTextTheme
-                                                .headline4),
+                                        Padding(
+                                          padding: const EdgeInsets.all(4.0),
+                                          child: Text("Nitrogen dioxide\n (μg/m^3)",
+                                              textAlign: TextAlign.center,
+                                              style: Theme.of(context)
+                                                  .primaryTextTheme
+                                                  .bodyText1),
+                                        ),
+                                        Padding(
+                                          padding: const EdgeInsets.all(4.0),
+                                          child: Text(
+                                              context
+                                                  .read<WebserviceBloc>()
+                                                  .currentForecast
+                                                  .fold(
+                                                    (l) => l.message,
+                                                    (r) => r
+                                                        .data[0].components.so2
+                                                        .toString(),
+                                                  ),
+                                              textAlign: TextAlign.center,
+                                              style: Theme.of(context)
+                                                  .primaryTextTheme
+                                                  .headline4),
+                                        ),
                                       ],
                                     ),
                                   ),
@@ -137,30 +139,41 @@ class WeatherDetails extends StatelessWidget {
                               ),
                               Expanded(
                                 child: GestureDetector(
-                                  onTap: () => context.read<PlotCubit>().changeCurrentComponent('CO'),
+                                  onTap: () => context
+                                      .read<PlotCubit>()
+                                      .changeCurrentComponent(ComponentType.co),
                                   child: Card(
-                                    color: Colors.amberAccent,
+                                    color: Theme.of(context).primaryColor,
                                     child: Column(
-                                      mainAxisAlignment: MainAxisAlignment.center,
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
                                       children: [
-                                        Text("Carbon Monoxide\n (μg/m^3)",
-                                            textAlign: TextAlign.center,
-                                            style: Theme.of(context)
-                                                .primaryTextTheme
-                                                .bodyText1),
-                                        Text(
-                                            context
-                                                .read<WebserviceBloc>()
-                                                .currentForecast
-                                                .fold(
-                                                  (l) => l.message,
-                                                  (r) => r.data[0].components.co
-                                                      .toString(),
-                                                ),
-                                            textAlign: TextAlign.center,
-                                            style: Theme.of(context)
-                                                .primaryTextTheme
-                                                .headline4),
+                                        Padding(
+                                          padding: const EdgeInsets.all(4.0),
+                                          child: Text(
+                                              "Carbon Monoxide\n (μg/m^3)",
+                                              textAlign: TextAlign.center,
+                                              style: Theme.of(context)
+                                                  .primaryTextTheme
+                                                  .bodyText1),
+                                        ),
+                                        Padding(
+                                          padding: const EdgeInsets.all(4.0),
+                                          child: Text(
+                                              context
+                                                  .read<WebserviceBloc>()
+                                                  .currentForecast
+                                                  .fold(
+                                                    (l) => l.message,
+                                                    (r) => r
+                                                        .data[0].components.co
+                                                        .toString(),
+                                                  ),
+                                              textAlign: TextAlign.center,
+                                              style: Theme.of(context)
+                                                  .primaryTextTheme
+                                                  .headline4),
+                                        ),
                                       ],
                                     ),
                                   ),
@@ -176,30 +189,41 @@ class WeatherDetails extends StatelessWidget {
                             children: [
                               Expanded(
                                 child: GestureDetector(
-                                  onTap: () => context.read<PlotCubit>().changeCurrentComponent('PM25'),
+                                  onTap: () => context
+                                      .read<PlotCubit>()
+                                      .changeCurrentComponent(
+                                          ComponentType.pm25),
                                   child: Card(
-                                    color: Colors.amberAccent,
+                                    color: Theme.of(context).primaryColor,
                                     child: Column(
-                                      mainAxisAlignment: MainAxisAlignment.center,
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
                                       children: [
-                                        Text("Fine particles matter\n (μg/m^3)",
-                                            textAlign: TextAlign.center,
-                                            style: Theme.of(context)
-                                                .primaryTextTheme
-                                                .bodyText1),
-                                        Text(
-                                            context
-                                                .read<WebserviceBloc>()
-                                                .currentForecast
-                                                .fold(
-                                                  (l) => l.message,
-                                                  (r) => r.data[0].components.pm25
-                                                      .toString(),
-                                                ),
-                                            textAlign: TextAlign.center,
-                                            style: Theme.of(context)
-                                                .primaryTextTheme
-                                                .headline4),
+                                        Padding(
+                                          padding: const EdgeInsets.all(4.0),
+                                          child: Text("Fine particles matter\n (μg/m^3)",
+                                              textAlign: TextAlign.center,
+                                              style: Theme.of(context)
+                                                  .primaryTextTheme
+                                                  .bodyText1),
+                                        ),
+                                        Padding(
+                                          padding: const EdgeInsets.all(4.0),
+                                          child: Text(
+                                              context
+                                                  .read<WebserviceBloc>()
+                                                  .currentForecast
+                                                  .fold(
+                                                    (l) => l.message,
+                                                    (r) => r
+                                                        .data[0].components.pm25
+                                                        .toString(),
+                                                  ),
+                                              textAlign: TextAlign.center,
+                                              style: Theme.of(context)
+                                                  .primaryTextTheme
+                                                  .headline4),
+                                        ),
                                       ],
                                     ),
                                   ),
@@ -210,7 +234,7 @@ class WeatherDetails extends StatelessWidget {
                                   onTap: () => Navigator.of(context)
                                       .pushNamed('/weather/details'),
                                   child: Card(
-                                    color: Colors.amberAccent,
+                                    color: Theme.of(context).primaryColor,
                                     child: Icon(
                                       CupertinoIcons.arrow_right,
                                       size: 30,
@@ -233,3 +257,4 @@ class WeatherDetails extends StatelessWidget {
     );
   }
 }
+

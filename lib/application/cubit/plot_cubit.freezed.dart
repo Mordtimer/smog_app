@@ -16,7 +16,7 @@ final _privateConstructorUsedError = UnsupportedError(
 class _$PlotStateTearOff {
   const _$PlotStateTearOff();
 
-  _Initial call({required String currentComponent}) {
+  _Initial call({required ComponentType currentComponent}) {
     return _Initial(
       currentComponent: currentComponent,
     );
@@ -28,7 +28,7 @@ const $PlotState = _$PlotStateTearOff();
 
 /// @nodoc
 mixin _$PlotState {
-  String get currentComponent => throw _privateConstructorUsedError;
+  ComponentType get currentComponent => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $PlotStateCopyWith<PlotState> get copyWith =>
@@ -39,7 +39,7 @@ mixin _$PlotState {
 abstract class $PlotStateCopyWith<$Res> {
   factory $PlotStateCopyWith(PlotState value, $Res Function(PlotState) then) =
       _$PlotStateCopyWithImpl<$Res>;
-  $Res call({String currentComponent});
+  $Res call({ComponentType currentComponent});
 }
 
 /// @nodoc
@@ -58,7 +58,7 @@ class _$PlotStateCopyWithImpl<$Res> implements $PlotStateCopyWith<$Res> {
       currentComponent: currentComponent == freezed
           ? _value.currentComponent
           : currentComponent // ignore: cast_nullable_to_non_nullable
-              as String,
+              as ComponentType,
     ));
   }
 }
@@ -68,7 +68,7 @@ abstract class _$InitialCopyWith<$Res> implements $PlotStateCopyWith<$Res> {
   factory _$InitialCopyWith(_Initial value, $Res Function(_Initial) then) =
       __$InitialCopyWithImpl<$Res>;
   @override
-  $Res call({String currentComponent});
+  $Res call({ComponentType currentComponent});
 }
 
 /// @nodoc
@@ -88,7 +88,7 @@ class __$InitialCopyWithImpl<$Res> extends _$PlotStateCopyWithImpl<$Res>
       currentComponent: currentComponent == freezed
           ? _value.currentComponent
           : currentComponent // ignore: cast_nullable_to_non_nullable
-              as String,
+              as ComponentType,
     ));
   }
 }
@@ -99,7 +99,7 @@ class _$_Initial implements _Initial {
   const _$_Initial({required this.currentComponent});
 
   @override
-  final String currentComponent;
+  final ComponentType currentComponent;
 
   @override
   String toString() {
@@ -127,10 +127,11 @@ class _$_Initial implements _Initial {
 }
 
 abstract class _Initial implements PlotState {
-  const factory _Initial({required String currentComponent}) = _$_Initial;
+  const factory _Initial({required ComponentType currentComponent}) =
+      _$_Initial;
 
   @override
-  String get currentComponent => throw _privateConstructorUsedError;
+  ComponentType get currentComponent => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
   _$InitialCopyWith<_Initial> get copyWith =>

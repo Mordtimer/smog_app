@@ -7,6 +7,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
 import 'package:meta/meta.dart';
 import 'package:smog_app/domain/failure.dart';
+import 'package:smog_app/infrastructure/history_repository.dart';
 import 'package:smog_app/model/pollution_data_model.dart';
 import 'package:smog_app/model/webservice.dart';
 
@@ -20,9 +21,9 @@ class WebserviceBloc extends Bloc<WebserviceEvent, WebserviceState> {
   WebserviceBloc(this._forecastRepository) : super(WebserviceState.initial());
   Either<Failure, PollutionData> currentForecast =
       left(Failure(message: 'Initial State'));
-  Either<Failure, String> currentCity = right('Gliwice');
-  double currentLat = 50;
-  double currentLon = 50;
+  Either<Failure, HistoricalPollutionData> historicalPollution =
+      left(Failure(message: 'Initial State'));
+  Either<Failure, String> currentCity = right(HistoryRepository().last);
 
   @override
   Stream<WebserviceState> mapEventToState(
@@ -33,17 +34,20 @@ class WebserviceBloc extends Bloc<WebserviceEvent, WebserviceState> {
         var city = '';
         yield currentCity.fold((l) {
           return const WebserviceState.invalidCity();
-          }, (r) {
+        }, (r) {
           city = r;
           return const WebserviceState.loadInProgress();
         });
 
+        final historicalResult =
+            await _forecastRepository.fetchHistoricalPollutionData(city);
         final forecastResult =
             await _forecastRepository.fetchCurrentPollutionData(city);
 
         yield forecastResult.fold((l) => const WebserviceState.loadFailure(),
             (r) => WebserviceState.dataRecived(pollutionData: r, city: city));
         currentForecast = forecastResult;
+        historicalPollution = historicalResult;
       },
       newCity: (e) async* {
         currentCity = right(e.city);
@@ -53,6 +57,8 @@ class WebserviceBloc extends Bloc<WebserviceEvent, WebserviceState> {
           return WebserviceState.loadInProgress();
         });
 
+        final historicalResult =
+            await _forecastRepository.fetchHistoricalPollutionData(city);
         final forecastResult =
             await _forecastRepository.fetchCurrentPollutionData(city);
 
@@ -61,6 +67,7 @@ class WebserviceBloc extends Bloc<WebserviceEvent, WebserviceState> {
             (r) => WebserviceState.dataRecived(
                 pollutionData: r, city: currentCity.fold((l) => '', (r) => r)));
         currentForecast = forecastResult;
+        historicalPollution = historicalResult;
       },
     );
   }

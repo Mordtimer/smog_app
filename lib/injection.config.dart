@@ -16,8 +16,8 @@ import 'model/webservice.dart' as _i4; // ignore_for_file: unnecessary_lambdas
 _i1.GetIt $initGetIt(_i1.GetIt get,
     {String? environment, _i2.EnvironmentFilter? environmentFilter}) {
   final gh = _i2.GetItHelper(get, environment, environmentFilter);
-  gh.lazySingleton<_i3.PlotCubit>(() => _i3.PlotCubit());
-  gh.factory<_i4.Webservice>(() => _i4.Webservice());
+  gh.factory<_i3.PlotCubit>(() => _i3.PlotCubit());
+  gh.lazySingleton<_i4.Webservice>(() => _i4.Webservice());
   gh.lazySingleton<_i5.WebserviceBloc>(
       () => _i5.WebserviceBloc(get<_i4.Webservice>()));
   return get;
