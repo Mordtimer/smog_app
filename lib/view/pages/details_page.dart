@@ -4,12 +4,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:smog_app/application/cubit/plot_cubit.dart';
 import 'package:smog_app/application/webservice/webservice_bloc.dart';
-import 'package:smog_app/domain/components.dart';
+import 'package:smog_app/domain/enums.dart';
 import 'package:smog_app/domain/failure.dart';
+import '../../domain/enums.dart';
 import 'package:smog_app/view/pages/weather_page.dart';
 
 import '../../injection.dart';
 import '../chart_widget.dart';
+import '../history_chart_widget.dart';
 import 'custom_search.dart';
 
 class DetailsPage extends StatelessWidget {
@@ -23,11 +25,9 @@ class DetailsPage extends StatelessWidget {
       appBar: AppBar(
           centerTitle: true,
           leading: IconButton(
-            // TODO: Menu button to implement here
-            icon: Icon(CupertinoIcons.settings),
+            icon: Icon(CupertinoIcons.arrow_left),
             onPressed: () {
-              // Here will be some menu actions stuff
-            },
+              Navigator.of(context).pop();           },
           ),
           title: Text(
             context
@@ -74,7 +74,7 @@ class DetailsWidget extends StatelessWidget {
               Expanded(
                   child: Padding(
                       padding: const EdgeInsets.symmetric(vertical: 32, horizontal: 4),
-                      child: ChartWidget())),
+                      child: HistoryChartWidget())),
             ],
           ),
         ),

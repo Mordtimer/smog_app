@@ -4,12 +4,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:smog_app/application/cubit/plot_cubit.dart';
 import 'package:smog_app/application/webservice/webservice_bloc.dart';
-import 'package:smog_app/domain/components.dart';
+import 'package:smog_app/domain/enums.dart';
 import 'package:smog_app/domain/failure.dart';
 import 'package:smog_app/injection.dart';
 import 'package:smog_app/model/pollution_data_model.dart';
 import 'package:smog_app/view/Pages/custom_search.dart';
-import 'package:syncfusion_flutter_charts/charts.dart';
 
 import '../chart_widget.dart';
 

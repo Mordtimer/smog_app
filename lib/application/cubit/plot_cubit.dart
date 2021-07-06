@@ -1,7 +1,7 @@
 import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
-import 'package:smog_app/domain/components.dart';
+import 'package:smog_app/domain/enums.dart';
 
 part 'plot_state.dart';
 part 'plot_cubit.freezed.dart';
@@ -10,7 +10,7 @@ part 'plot_cubit.freezed.dart';
 class PlotCubit extends Cubit<PlotState> {
   PlotCubit() : super(PlotState.initial());
 
-  String get getStrComponent{
+  String get getStrComponent {
     switch (state.currentComponent) {
       case ComponentType.co:
         return 'CO';
@@ -31,5 +31,8 @@ class PlotCubit extends Cubit<PlotState> {
     }
   }
 
-  void changeCurrentComponent(ComponentType compontent) => emit(state.copyWith(currentComponent: compontent));
+  void changeTimePeriod(TimePeriod period) =>
+      emit(state.copyWith(currentTimePeriod: period));
+  void changeCurrentComponent(ComponentType compontent) =>
+      emit(state.copyWith(currentComponent: compontent));
 }

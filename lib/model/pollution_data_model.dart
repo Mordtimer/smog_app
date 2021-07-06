@@ -1,5 +1,5 @@
 import 'package:flutter/cupertino.dart';
-import 'package:smog_app/domain/components.dart';
+import 'package:smog_app/domain/enums.dart';
 
 class PollutionData {
   final Coord coord;
@@ -99,6 +99,7 @@ class Components {
         pm10.toString(),
         nh3.toString()
       ];
+
   List<String> get compNameList =>
       ['CO', 'NO', 'NO2', 'O3', 'SO2', 'PM25', 'PM10', 'NH3'];
 
@@ -132,13 +133,53 @@ class Components {
 class HistoricalPollutionData {
   final Coord coord;
   final List<Data> data;
+
+  List<Data> getListBadedOnEnum(TimePeriod period) {
+    switch (period) {
+      case TimePeriod.year:
+        return this.lastYear;
+      case TimePeriod.quarter:
+        return this.lastQuarter;
+      case TimePeriod.month:
+        return this.lastMonth;
+      case TimePeriod.week:
+        return this.lastWeek;
+
+    }
+  }
+
   List<Data> get lastWeek {
     List<Data> tmp = [];
-    for (int i = data.length - 1; i > data.length - 7; i--) {
+    for (int i = data.length - 1; i > data.length - 7*12; i--) {
       tmp.add(data[i]);
     }
     return tmp;
   }
+
+  List<Data> get lastMonth {
+    List<Data> tmp = [];
+    for (int i = data.length - 1; i > data.length - 30*12; i--) {
+      tmp.add(data[i]);
+    }
+    return tmp;
+  }
+
+  List<Data> get lastQuarter {
+    List<Data> tmp = [];
+    for (int i = data.length - 1; i > data.length - 12*93; i--) {
+      tmp.add(data[i]);
+    }
+    return tmp;
+  }
+
+  List<Data> get lastYear {
+    List<Data> tmp = [];
+    for (int i = data.length - 1; i > data.length - 180*12; i--) {
+      tmp.add(data[i]);
+    }
+    return tmp;
+  }
+
 
   HistoricalPollutionData({required this.coord, required this.data});
 
