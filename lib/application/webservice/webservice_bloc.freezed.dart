@@ -315,6 +315,10 @@ class _$WebserviceStateTearOff {
       city: city,
     );
   }
+
+  _InvalidCity invalidCity() {
+    return const _InvalidCity();
+  }
 }
 
 /// @nodoc
@@ -330,6 +334,7 @@ mixin _$WebserviceState {
         dataRecived,
     required TResult Function() loadFailure,
     required TResult Function(String city) selectedCity,
+    required TResult Function() invalidCity,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -339,6 +344,7 @@ mixin _$WebserviceState {
     TResult Function(PollutionData pollutionData, String city)? dataRecived,
     TResult Function()? loadFailure,
     TResult Function(String city)? selectedCity,
+    TResult Function()? invalidCity,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -349,6 +355,7 @@ mixin _$WebserviceState {
     required TResult Function(_DataRecived value) dataRecived,
     required TResult Function(_LoadFailure value) loadFailure,
     required TResult Function(_SelectedCity value) selectedCity,
+    required TResult Function(_InvalidCity value) invalidCity,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -358,6 +365,7 @@ mixin _$WebserviceState {
     TResult Function(_DataRecived value)? dataRecived,
     TResult Function(_LoadFailure value)? loadFailure,
     TResult Function(_SelectedCity value)? selectedCity,
+    TResult Function(_InvalidCity value)? invalidCity,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -429,6 +437,7 @@ class _$_Initial with DiagnosticableTreeMixin implements _Initial {
         dataRecived,
     required TResult Function() loadFailure,
     required TResult Function(String city) selectedCity,
+    required TResult Function() invalidCity,
   }) {
     return initial();
   }
@@ -441,6 +450,7 @@ class _$_Initial with DiagnosticableTreeMixin implements _Initial {
     TResult Function(PollutionData pollutionData, String city)? dataRecived,
     TResult Function()? loadFailure,
     TResult Function(String city)? selectedCity,
+    TResult Function()? invalidCity,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -457,6 +467,7 @@ class _$_Initial with DiagnosticableTreeMixin implements _Initial {
     required TResult Function(_DataRecived value) dataRecived,
     required TResult Function(_LoadFailure value) loadFailure,
     required TResult Function(_SelectedCity value) selectedCity,
+    required TResult Function(_InvalidCity value) invalidCity,
   }) {
     return initial(this);
   }
@@ -469,6 +480,7 @@ class _$_Initial with DiagnosticableTreeMixin implements _Initial {
     TResult Function(_DataRecived value)? dataRecived,
     TResult Function(_LoadFailure value)? loadFailure,
     TResult Function(_SelectedCity value)? selectedCity,
+    TResult Function(_InvalidCity value)? invalidCity,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -537,6 +549,7 @@ class _$_LoadInProgress
         dataRecived,
     required TResult Function() loadFailure,
     required TResult Function(String city) selectedCity,
+    required TResult Function() invalidCity,
   }) {
     return loadInProgress();
   }
@@ -549,6 +562,7 @@ class _$_LoadInProgress
     TResult Function(PollutionData pollutionData, String city)? dataRecived,
     TResult Function()? loadFailure,
     TResult Function(String city)? selectedCity,
+    TResult Function()? invalidCity,
     required TResult orElse(),
   }) {
     if (loadInProgress != null) {
@@ -565,6 +579,7 @@ class _$_LoadInProgress
     required TResult Function(_DataRecived value) dataRecived,
     required TResult Function(_LoadFailure value) loadFailure,
     required TResult Function(_SelectedCity value) selectedCity,
+    required TResult Function(_InvalidCity value) invalidCity,
   }) {
     return loadInProgress(this);
   }
@@ -577,6 +592,7 @@ class _$_LoadInProgress
     TResult Function(_DataRecived value)? dataRecived,
     TResult Function(_LoadFailure value)? loadFailure,
     TResult Function(_SelectedCity value)? selectedCity,
+    TResult Function(_InvalidCity value)? invalidCity,
     required TResult orElse(),
   }) {
     if (loadInProgress != null) {
@@ -682,6 +698,7 @@ class _$_DataRecived with DiagnosticableTreeMixin implements _DataRecived {
         dataRecived,
     required TResult Function() loadFailure,
     required TResult Function(String city) selectedCity,
+    required TResult Function() invalidCity,
   }) {
     return dataRecived(pollutionData, city);
   }
@@ -694,6 +711,7 @@ class _$_DataRecived with DiagnosticableTreeMixin implements _DataRecived {
     TResult Function(PollutionData pollutionData, String city)? dataRecived,
     TResult Function()? loadFailure,
     TResult Function(String city)? selectedCity,
+    TResult Function()? invalidCity,
     required TResult orElse(),
   }) {
     if (dataRecived != null) {
@@ -710,6 +728,7 @@ class _$_DataRecived with DiagnosticableTreeMixin implements _DataRecived {
     required TResult Function(_DataRecived value) dataRecived,
     required TResult Function(_LoadFailure value) loadFailure,
     required TResult Function(_SelectedCity value) selectedCity,
+    required TResult Function(_InvalidCity value) invalidCity,
   }) {
     return dataRecived(this);
   }
@@ -722,6 +741,7 @@ class _$_DataRecived with DiagnosticableTreeMixin implements _DataRecived {
     TResult Function(_DataRecived value)? dataRecived,
     TResult Function(_LoadFailure value)? loadFailure,
     TResult Function(_SelectedCity value)? selectedCity,
+    TResult Function(_InvalidCity value)? invalidCity,
     required TResult orElse(),
   }) {
     if (dataRecived != null) {
@@ -795,6 +815,7 @@ class _$_LoadFailure with DiagnosticableTreeMixin implements _LoadFailure {
         dataRecived,
     required TResult Function() loadFailure,
     required TResult Function(String city) selectedCity,
+    required TResult Function() invalidCity,
   }) {
     return loadFailure();
   }
@@ -807,6 +828,7 @@ class _$_LoadFailure with DiagnosticableTreeMixin implements _LoadFailure {
     TResult Function(PollutionData pollutionData, String city)? dataRecived,
     TResult Function()? loadFailure,
     TResult Function(String city)? selectedCity,
+    TResult Function()? invalidCity,
     required TResult orElse(),
   }) {
     if (loadFailure != null) {
@@ -823,6 +845,7 @@ class _$_LoadFailure with DiagnosticableTreeMixin implements _LoadFailure {
     required TResult Function(_DataRecived value) dataRecived,
     required TResult Function(_LoadFailure value) loadFailure,
     required TResult Function(_SelectedCity value) selectedCity,
+    required TResult Function(_InvalidCity value) invalidCity,
   }) {
     return loadFailure(this);
   }
@@ -835,6 +858,7 @@ class _$_LoadFailure with DiagnosticableTreeMixin implements _LoadFailure {
     TResult Function(_DataRecived value)? dataRecived,
     TResult Function(_LoadFailure value)? loadFailure,
     TResult Function(_SelectedCity value)? selectedCity,
+    TResult Function(_InvalidCity value)? invalidCity,
     required TResult orElse(),
   }) {
     if (loadFailure != null) {
@@ -927,6 +951,7 @@ class _$_SelectedCity with DiagnosticableTreeMixin implements _SelectedCity {
         dataRecived,
     required TResult Function() loadFailure,
     required TResult Function(String city) selectedCity,
+    required TResult Function() invalidCity,
   }) {
     return selectedCity(city);
   }
@@ -939,6 +964,7 @@ class _$_SelectedCity with DiagnosticableTreeMixin implements _SelectedCity {
     TResult Function(PollutionData pollutionData, String city)? dataRecived,
     TResult Function()? loadFailure,
     TResult Function(String city)? selectedCity,
+    TResult Function()? invalidCity,
     required TResult orElse(),
   }) {
     if (selectedCity != null) {
@@ -955,6 +981,7 @@ class _$_SelectedCity with DiagnosticableTreeMixin implements _SelectedCity {
     required TResult Function(_DataRecived value) dataRecived,
     required TResult Function(_LoadFailure value) loadFailure,
     required TResult Function(_SelectedCity value) selectedCity,
+    required TResult Function(_InvalidCity value) invalidCity,
   }) {
     return selectedCity(this);
   }
@@ -967,6 +994,7 @@ class _$_SelectedCity with DiagnosticableTreeMixin implements _SelectedCity {
     TResult Function(_DataRecived value)? dataRecived,
     TResult Function(_LoadFailure value)? loadFailure,
     TResult Function(_SelectedCity value)? selectedCity,
+    TResult Function(_InvalidCity value)? invalidCity,
     required TResult orElse(),
   }) {
     if (selectedCity != null) {
@@ -983,4 +1011,113 @@ abstract class _SelectedCity implements WebserviceState {
   @JsonKey(ignore: true)
   _$SelectedCityCopyWith<_SelectedCity> get copyWith =>
       throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$InvalidCityCopyWith<$Res> {
+  factory _$InvalidCityCopyWith(
+          _InvalidCity value, $Res Function(_InvalidCity) then) =
+      __$InvalidCityCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$InvalidCityCopyWithImpl<$Res>
+    extends _$WebserviceStateCopyWithImpl<$Res>
+    implements _$InvalidCityCopyWith<$Res> {
+  __$InvalidCityCopyWithImpl(
+      _InvalidCity _value, $Res Function(_InvalidCity) _then)
+      : super(_value, (v) => _then(v as _InvalidCity));
+
+  @override
+  _InvalidCity get _value => super._value as _InvalidCity;
+}
+
+/// @nodoc
+
+class _$_InvalidCity with DiagnosticableTreeMixin implements _InvalidCity {
+  const _$_InvalidCity();
+
+  @override
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+    return 'WebserviceState.invalidCity()';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties..add(DiagnosticsProperty('type', 'WebserviceState.invalidCity'));
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) || (other is _InvalidCity);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() loadInProgress,
+    required TResult Function(PollutionData pollutionData, String city)
+        dataRecived,
+    required TResult Function() loadFailure,
+    required TResult Function(String city) selectedCity,
+    required TResult Function() invalidCity,
+  }) {
+    return invalidCity();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? loadInProgress,
+    TResult Function(PollutionData pollutionData, String city)? dataRecived,
+    TResult Function()? loadFailure,
+    TResult Function(String city)? selectedCity,
+    TResult Function()? invalidCity,
+    required TResult orElse(),
+  }) {
+    if (invalidCity != null) {
+      return invalidCity();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial value) initial,
+    required TResult Function(_LoadInProgress value) loadInProgress,
+    required TResult Function(_DataRecived value) dataRecived,
+    required TResult Function(_LoadFailure value) loadFailure,
+    required TResult Function(_SelectedCity value) selectedCity,
+    required TResult Function(_InvalidCity value) invalidCity,
+  }) {
+    return invalidCity(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_LoadInProgress value)? loadInProgress,
+    TResult Function(_DataRecived value)? dataRecived,
+    TResult Function(_LoadFailure value)? loadFailure,
+    TResult Function(_SelectedCity value)? selectedCity,
+    TResult Function(_InvalidCity value)? invalidCity,
+    required TResult orElse(),
+  }) {
+    if (invalidCity != null) {
+      return invalidCity(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _InvalidCity implements WebserviceState {
+  const factory _InvalidCity() = _$_InvalidCity;
 }

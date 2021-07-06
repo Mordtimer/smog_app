@@ -1,20 +1,30 @@
 import 'package:dartz/dartz.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:smog_app/domain/failure.dart';
 
 class CustomSearch extends SearchDelegate {
   List<String> listExample = [];
   List<String> recentList = [];
-  Either<Failure, String> result = left(Failure());
+  Either<Failure, String> result = left(Failure(message: 'Initial custom search state'));
 
   CustomSearch(this.recentList, this.listExample);
   @override
   ThemeData appBarTheme(BuildContext context) {
     return ThemeData(
-      // TODO: Configure Theme data for navbar
-      textTheme: Theme.of(context).textTheme.apply(),
+      hintColor: Colors.white,
+          textTheme: TextTheme(headline6: TextStyle(color: Colors.white)).apply(bodyColor: Colors.white),
+          primaryColor: Colors.grey[900],
+          scaffoldBackgroundColor: Color(0x2C2C2E),
+          
     );
   }
+
+  @override
+TextStyle get searchFieldStyle => TextStyle(
+    color: Colors.white,
+    fontSize: 18.0,
+  );
 
   @override
   List<Widget> buildActions(BuildContext context) {
@@ -32,7 +42,7 @@ class CustomSearch extends SearchDelegate {
   Widget buildLeading(BuildContext context) {
     
     return IconButton(
-      icon: Icon(Icons.arrow_back),
+      icon: Icon(CupertinoIcons.arrow_left),
       onPressed: () {
        
         close(context, result);
@@ -42,9 +52,17 @@ class CustomSearch extends SearchDelegate {
 
   @override
   Widget buildResults(BuildContext context) {
+    try{
     result = right(query);
+    
     close(context, result);
+    
+    
     return CircularProgressIndicator();
+    }
+    catch (e) {
+      return CircularProgressIndicator();
+    }
   
   }
 
