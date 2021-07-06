@@ -6,6 +6,7 @@ import 'package:smog_app/application/cubit/plot_cubit.dart';
 import 'package:smog_app/application/webservice/webservice_bloc.dart';
 import 'package:smog_app/domain/enums.dart';
 import 'package:smog_app/domain/failure.dart';
+import 'package:smog_app/infrastructure/history_repository.dart';
 import 'package:smog_app/injection.dart';
 import 'package:smog_app/model/pollution_data_model.dart';
 import 'package:smog_app/view/Pages/custom_search.dart';
@@ -13,21 +14,15 @@ import 'package:smog_app/view/Pages/custom_search.dart';
 import '../chart_widget.dart';
 
 class WeatherPage extends StatelessWidget {
-  List<String> get allCities => ["Miasto 1", "Miasto 2", "Miasto 3"];
-  List<String> get searchHistory => ["Historia 1", "Historia 2", "Historia 3"];
+  List<String> get allCities => [];
+  List<String> get searchHistory => HistoryRepository.instance.getHistory;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
           centerTitle: true,
-          leading: IconButton(
-            // TODO: Menu button to implement here
-            icon: Icon(CupertinoIcons.settings),
-            onPressed: () {
-              // Here will be some menu actions stuff
-            },
-          ),
+          
           title: Text(
             context
                 .read<WebserviceBloc>()

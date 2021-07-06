@@ -134,10 +134,10 @@ class HistoricalPollutionData {
   final Coord coord;
   final List<Data> data;
 
-  List<Data> getListBadedOnEnum(TimePeriod period) {
+  List<Data> getListBasedOnEnum(TimePeriod period) {
     switch (period) {
-      case TimePeriod.year:
-        return this.lastYear;
+      case TimePeriod.halfYear:
+        return this.lastHalfYear;
       case TimePeriod.quarter:
         return this.lastQuarter;
       case TimePeriod.month:
@@ -172,10 +172,11 @@ class HistoricalPollutionData {
     return tmp;
   }
 
-  List<Data> get lastYear {
+  List<Data> get lastHalfYear {
     List<Data> tmp = [];
     for (int i = data.length - 1; i > data.length - 180*12; i--) {
-      tmp.add(data[i]);
+
+        tmp.add(data[i]);
     }
     return tmp;
   }

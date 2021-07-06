@@ -35,7 +35,7 @@ class HistoryChartWidget extends StatelessWidget {
                           dataSource: context
                               .read<WebserviceBloc>()
                               .historicalPollution
-                              .fold((l) => [], (r) => r.getListBadedOnEnum(context.read<PlotCubit>().state.currentTimePeriod)),
+                              .fold((l) => [], (r) => r.getListBasedOnEnum(context.read<PlotCubit>().state.currentTimePeriod)),
                           xValueMapper: (datum, _) => datum.time,
                           yValueMapper: (datum, _) => datum.components
                               .getComponent(context
@@ -50,7 +50,7 @@ class HistoryChartWidget extends StatelessWidget {
               Expanded(child: TextButton(onPressed: () {context.read<PlotCubit>().changeTimePeriod(TimePeriod.week);}, child: Text('Week'))),
               Expanded(child: TextButton(onPressed: () {context.read<PlotCubit>().changeTimePeriod(TimePeriod.month);}, child: Text('Month'))),
               Expanded(child: TextButton(onPressed: () {context.read<PlotCubit>().changeTimePeriod(TimePeriod.quarter);}, child: Text('Quarter'))),
-              Expanded(child: TextButton(onPressed: () {context.read<PlotCubit>().changeTimePeriod(TimePeriod.year);}, child: Text('Year')))
+              Expanded(child: TextButton(onPressed: () {context.read<PlotCubit>().changeTimePeriod(TimePeriod.halfYear);}, child: Text('180 days')))
             ],
           )
         ]);

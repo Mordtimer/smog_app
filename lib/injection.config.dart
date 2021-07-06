@@ -9,7 +9,7 @@ import 'package:injectable/injectable.dart' as _i2;
 
 import 'application/cubit/plot_cubit.dart' as _i3;
 import 'application/webservice/webservice_bloc.dart' as _i5;
-import 'model/webservice.dart' as _i4; // ignore_for_file: unnecessary_lambdas
+import 'infrastructure/webservice.dart' as _i4; // ignore_for_file: unnecessary_lambdas
 
 // ignore_for_file: lines_longer_than_80_chars
 /// initializes the registration of provided dependencies inside of [GetIt]
