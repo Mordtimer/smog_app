@@ -18,18 +18,17 @@ class Webservice {
         "appid": dotenv.env['API_KEY']
       }));
 
-      final Map latLon = jsonDecode(geoResponse.body)[0];
+      final List<dynamic> latLon = jsonDecode(geoResponse.body);
 
       if(latLon.isEmpty) {
         return left(Failure(message: 'City not found'));
       }
 
       final pollutionResponse = await http.get(Uri.https('api.openweathermap.org', '/data/2.5/air_pollution', {
-        "lat": latLon['lat'].toString(),
-        "lon": latLon['lon'].toString(),
+        "lat": latLon[0]['lat'].toString(),
+        "lon": latLon[0]['lon'].toString(),
         "appid": dotenv.env['API_KEY']
       }));
-
 
       if(pollutionResponse.statusCode > 300) {
         return left(Failure(message: pollutionResponse.body));
@@ -39,7 +38,6 @@ class Webservice {
     } catch (e) {
       return left(Failure(message: e.toString()));      
     }
-
   }
 
   @factoryMethod
@@ -52,21 +50,19 @@ class Webservice {
         "appid": dotenv.env['API_KEY']
       }));
 
-      final Map latLon = jsonDecode(geoResponse.body)[0];
+      final List<dynamic> latLon = jsonDecode(geoResponse.body);
 
       if(latLon.isEmpty) {
         return left(Failure(message: 'City not found'));
       }
-      final past =  (DateTime.now().toUtc().subtract(Duration(days: 10)).millisecondsSinceEpoch~/1000).toString();
 
       final historicalPollutionResponse = await http.get(Uri.https('api.openweathermap.org', '/data/2.5/air_pollution/history', {
-        "lat": latLon['lat'].toString(),
-        "lon": latLon['lon'].toString(),
+        "lat": latLon[0]['lat'].toString(),
+        "lon": latLon[0]['lon'].toString(),
         "start": (DateTime.now().toUtc().subtract(Duration(days: 90)).millisecondsSinceEpoch~/1000).toString(),
         "end": (DateTime.now().toUtc().millisecondsSinceEpoch~/1000).toString(),
         "appid": dotenv.env['API_KEY']
       }));
-
 
       if(historicalPollutionResponse.statusCode > 300) {
         return left(Failure(message: historicalPollutionResponse.body));
