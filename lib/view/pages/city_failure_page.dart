@@ -21,7 +21,7 @@ class CityFailurePage extends StatelessWidget {
                 .headline3!
                 .copyWith(color: Colors.white),
           )),
-          Center(child: Text('Check your internet connection', style: Theme.of(context).textTheme.headline6,)),
+          Center(child: Text('Check your internet connection', style: Theme.of(context).textTheme.headline6!.copyWith(color: Colors.white))),
           IconButton(
               onPressed: () {
                 String city = HistoryRepository().last;

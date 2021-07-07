@@ -28,7 +28,6 @@ class ChartWidget extends StatelessWidget {
                         interactiveTooltip: InteractiveTooltip(enable: true)),
                     series: <ChartSeries>[
                       LineSeries<Data, DateTime>(
-
                           dataSource: context
                               .read<WebserviceBloc>()
                               .historicalPollution

@@ -7,7 +7,6 @@ import 'package:smog_app/view/Pages/city_failure_page.dart';
 import 'package:smog_app/view/Pages/load_page.dart';
 import 'package:smog_app/view/pages/details_page.dart';
 import 'package:smog_app/view/pages/weather_page.dart';
-import 'package:smog_app/view/pages/search_again_page.dart';
 import 'package:hive/hive.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 
@@ -39,7 +38,6 @@ class MyApp extends StatelessWidget {
           '/': (context) => LoadPage(),
           '/weather': (context) => WeatherPage(),
           '/error': (context) => CityFailurePage(),
-          '/searchAgain': (context) => SearchAgainPage(),
           '/weather/details': (context) => DetailsPage(),
         },
         initialRoute: '/',
