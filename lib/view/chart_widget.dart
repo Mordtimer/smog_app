@@ -22,7 +22,11 @@ class ChartWidget extends StatelessWidget {
               child: Padding(
                 padding: const EdgeInsets.fromLTRB(0, 8, 16, 0),
                 child: SfCartesianChart(
-                    title: ChartTitle(textStyle: Theme.of(context).textTheme.headline6!.copyWith(color: Colors.white70),
+                    title: ChartTitle(
+                        textStyle: Theme.of(context)
+                            .textTheme
+                            .headline6!
+                            .copyWith(color: Colors.white70),
                         text: context.read<PlotCubit>().getStrComponent),
                     primaryXAxis: DateTimeAxis(
                         interactiveTooltip: InteractiveTooltip(enable: true)),
