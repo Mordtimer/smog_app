@@ -4,7 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:smog_app/application/cubit/plot_cubit.dart';
 import 'package:smog_app/application/webservice/webservice_bloc.dart';
 import 'package:smog_app/domain/enums.dart';
-import 'package:smog_app/model/pollution_data_model.dart';
+import 'package:smog_app/infrastructure/pollution_data_model.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
 
 class HistoryChartWidget extends StatelessWidget {

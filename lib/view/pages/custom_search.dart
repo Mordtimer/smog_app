@@ -83,12 +83,16 @@ TextStyle get searchFieldStyle => TextStyle(
     return ListView.builder(
         itemCount: suggestionList.length,
         itemBuilder: (context, index) {
-          return ListTile(
-            title: Text(suggestionList[index]),
-            onTap: () {
-              result = right(suggestionList[index]);
-              close(context, result);
-            },
+          return Padding(
+            padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
+            child: ListTile(
+              trailing: Icon(Icons.history, color: Colors.white),
+              title: Text(suggestionList[index], style: TextStyle(color: Colors.white)),
+              onTap: () {
+                result = right(suggestionList[index]);
+                close(context, result);
+              },
+            ),
           );
         });
   }

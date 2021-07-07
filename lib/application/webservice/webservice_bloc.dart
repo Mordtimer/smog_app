@@ -8,7 +8,7 @@ import 'package:injectable/injectable.dart';
 import 'package:meta/meta.dart';
 import 'package:smog_app/domain/failure.dart';
 import 'package:smog_app/infrastructure/history_repository.dart';
-import 'package:smog_app/model/pollution_data_model.dart';
+import 'package:smog_app/infrastructure/pollution_data_model.dart';
 import 'package:smog_app/infrastructure/webservice.dart';
 
 part 'webservice_event.dart';

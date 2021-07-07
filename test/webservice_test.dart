@@ -2,7 +2,7 @@ import 'package:dartz/dartz.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:smog_app/domain/failure.dart';
 import 'package:smog_app/infrastructure/webservice.dart';
-import 'package:smog_app/model/pollution_data_model.dart';
+import 'package:smog_app/infrastructure/pollution_data_model.dart';
 
 Webservice webService = new Webservice();
 void main() {

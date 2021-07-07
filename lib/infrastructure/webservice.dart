@@ -4,7 +4,7 @@ import 'package:http/http.dart' as http;
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:injectable/injectable.dart';
 import 'package:smog_app/domain/failure.dart';
-import 'package:smog_app/model/pollution_data_model.dart';
+import 'package:smog_app/infrastructure/pollution_data_model.dart';
 
 @lazySingleton
 class Webservice {
