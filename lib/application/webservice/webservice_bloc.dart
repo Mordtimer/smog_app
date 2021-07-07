@@ -62,10 +62,12 @@ class WebserviceBloc extends Bloc<WebserviceEvent, WebserviceState> {
         final forecastResult =
             await _forecastRepository.fetchCurrentPollutionData(city);
 
-        yield forecastResult.fold(
-            (l) => const WebserviceState.loadFailure(),
-            (r) => WebserviceState.dataRecived(
-                pollutionData: r, city: currentCity.fold((l) => '', (r) => r)));
+        yield forecastResult.fold((l) => const WebserviceState.loadFailure(),
+            (r) {
+              currentCity.fold((l) {}, (rCity) => HistoryRepository().add(rCity));
+          return WebserviceState.dataRecived(
+              pollutionData: r, city: currentCity.fold((l) => '', (r) => r));
+        });
         currentForecast = forecastResult;
         historicalPollution = historicalResult;
       },

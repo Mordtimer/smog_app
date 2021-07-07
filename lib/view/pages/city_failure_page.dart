@@ -1,9 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+// ignore: implementation_imports
 import 'package:provider/src/provider.dart';
 import 'package:smog_app/application/webservice/webservice_bloc.dart';
-
-import 'load_page.dart';
+import 'package:smog_app/infrastructure/history_repository.dart';
 
 class CityFailurePage extends StatelessWidget {
   @override
@@ -21,11 +21,13 @@ class CityFailurePage extends StatelessWidget {
                 .headline3!
                 .copyWith(color: Colors.white),
           )),
+          Center(child: Text('Check your internet connection', style: Theme.of(context).textTheme.headline6,)),
           IconButton(
               onPressed: () {
+                String city = HistoryRepository().last;
                 context.read<WebserviceBloc>()
-                // TODO popraw
-                      .add(WebserviceEvent.newCity(city: 'Gliwice'));
+                
+                      .add(WebserviceEvent.newCity(city: city));
                   Navigator.pushNamedAndRemoveUntil(
                       context, '/', (route) => false);
               },

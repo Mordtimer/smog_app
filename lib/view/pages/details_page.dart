@@ -7,10 +7,8 @@ import 'package:smog_app/application/webservice/webservice_bloc.dart';
 import 'package:smog_app/domain/enums.dart';
 import 'package:smog_app/domain/failure.dart';
 import '../../domain/enums.dart';
-import 'package:smog_app/view/pages/weather_page.dart';
 
 import '../../injection.dart';
-import '../chart_widget.dart';
 import '../history_chart_widget.dart';
 import 'custom_search.dart';
 
@@ -68,18 +66,18 @@ class DetailsWidget extends StatelessWidget {
     return Column(
       children: [
         Expanded(
-          flex: 2,
+          flex: 20,
           child: Row(
             children: <Widget>[
               Expanded(
                   child: Padding(
-                      padding: const EdgeInsets.symmetric(vertical: 32, horizontal: 4),
+                      padding: const EdgeInsets.fromLTRB(4, 32, 4, 0),
                       child: HistoryChartWidget())),
             ],
           ),
         ),
         Expanded(
-            flex: 1,
+            flex: 12,
             child: ListView.builder(
                 itemCount: context.read<WebserviceBloc>().currentForecast.fold(
                     (l) => 0, (r) => r.data[0].components.compList.length),

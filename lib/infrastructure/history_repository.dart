@@ -17,4 +17,8 @@ class HistoryRepository{
   setBox(Box<String> box){
     _items = box;
   }
+
+  void add(String city){
+    _items!.put(city.hashCode, city);
+  }
 }

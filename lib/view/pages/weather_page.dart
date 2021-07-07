@@ -8,7 +8,6 @@ import 'package:smog_app/domain/enums.dart';
 import 'package:smog_app/domain/failure.dart';
 import 'package:smog_app/infrastructure/history_repository.dart';
 import 'package:smog_app/injection.dart';
-import 'package:smog_app/model/pollution_data_model.dart';
 import 'package:smog_app/view/Pages/custom_search.dart';
 
 import '../chart_widget.dart';

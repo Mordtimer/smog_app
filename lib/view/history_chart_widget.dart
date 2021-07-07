@@ -20,7 +20,7 @@ class HistoryChartWidget extends StatelessWidget {
           Container(
               color: Theme.of(context).primaryColor,
               child: Padding(
-                padding: const EdgeInsets.fromLTRB(0, 8, 16, 0),
+                padding: const EdgeInsets.fromLTRB(0, 8, 0, 0),
                 child: SfCartesianChart(
                     title: ChartTitle(
                         textStyle: Theme.of(context)
