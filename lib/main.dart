@@ -10,6 +10,8 @@ import 'package:smog_app/view/pages/weather_page.dart';
 import 'package:hive/hive.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 
+import 'infrastructure/cities_repository.dart';
+
 void main() async {
   configureDependencies(Env.prod);
   await Hive.initFlutter();
@@ -18,6 +20,7 @@ void main() async {
     historyBox.put('Gliwice'.hashCode, 'Gliwice');
   }
   HistoryRepository.instance.setBox(historyBox);
+  await CitiesRepository().loadAll();
   runApp(MyApp());
 }
 

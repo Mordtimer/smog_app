@@ -2,10 +2,11 @@ import 'package:dartz/dartz.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:smog_app/domain/failure.dart';
+import 'package:smog_app/infrastructure/cities_repository.dart';
 
 class CustomSearch extends SearchDelegate {
   List<String> listExample = [];
-  List<String> recentList = [];
+  List<String> recentList = CitiesRepository().allCities;
   Either<Failure, String> result = left(Failure(message: 'Initial custom search state'));
 
   CustomSearch(this.recentList, this.listExample);
@@ -52,16 +53,14 @@ TextStyle get searchFieldStyle => TextStyle(
 
   @override
   Widget buildResults(BuildContext context) {
+    const widget = CircularProgressIndicator();
     try{
     result = right(query);
-    
     close(context, result);
-    
-    
-    return CircularProgressIndicator();
+    return widget;
     }
     catch (e) {
-      return CircularProgressIndicator();
+      return widget;
     }
   
   }
@@ -86,7 +85,7 @@ TextStyle get searchFieldStyle => TextStyle(
           return Padding(
             padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
             child: ListTile(
-              trailing: Icon(Icons.history, color: Colors.white),
+              
               title: Text(suggestionList[index], style: TextStyle(color: Colors.white)),
               onTap: () {
                 result = right(suggestionList[index]);

@@ -6,6 +6,7 @@ import 'package:smog_app/application/cubit/plot_cubit.dart';
 import 'package:smog_app/application/webservice/webservice_bloc.dart';
 import 'package:smog_app/domain/enums.dart';
 import 'package:smog_app/domain/failure.dart';
+import 'package:smog_app/infrastructure/cities_repository.dart';
 import 'package:smog_app/infrastructure/history_repository.dart';
 import 'package:smog_app/injection.dart';
 import 'package:smog_app/view/Pages/custom_search.dart';
@@ -13,7 +14,7 @@ import 'package:smog_app/view/Pages/custom_search.dart';
 import '../chart_widget.dart';
 
 class WeatherPage extends StatelessWidget {
-  List<String> get allCities => [];
+  List<String> get allCities => CitiesRepository().allCities;
   List<String> get searchHistory => HistoryRepository.instance.getHistory;
 
   @override
