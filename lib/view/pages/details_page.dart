@@ -6,6 +6,7 @@ import 'package:smog_app/application/cubit/plot_cubit.dart';
 import 'package:smog_app/application/webservice/webservice_bloc.dart';
 import 'package:smog_app/domain/enums.dart';
 import 'package:smog_app/domain/failure.dart';
+import 'package:smog_app/helpers/number-formatter.dart';
 import '../../domain/enums.dart';
 
 import '../../injection.dart';
@@ -25,7 +26,8 @@ class DetailsPage extends StatelessWidget {
           leading: IconButton(
             icon: Icon(CupertinoIcons.arrow_left),
             onPressed: () {
-              Navigator.of(context).pop();           },
+              Navigator.of(context).pop();
+            },
           ),
           title: Text(
             context
@@ -126,8 +128,8 @@ class DetailsWidget extends StatelessWidget {
                                       .currentForecast
                                       .fold(
                                           (l) => 'No Data',
-                                          (r) => r.data[0].components
-                                              .compList[index]),
+                                          (r) => formatNumber(r.data[0]
+                                              .components.compList[index])),
                                   style: Theme.of(context)
                                       .primaryTextTheme
                                       .bodyText1,
