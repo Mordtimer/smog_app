@@ -102,7 +102,7 @@ class WeatherDetails extends StatelessWidget {
                                       children: [
                                         Padding(
                                           padding: const EdgeInsets.all(4.0),
-                                          child: Text("Nitrogen dioxide\n (μg/m^3)",
+                                          child: Text("Nitrogen dioxide\n (μg/m\u00B3)",
                                               textAlign: TextAlign.center,
                                               style: Theme.of(context)
                                                   .primaryTextTheme
@@ -144,7 +144,7 @@ class WeatherDetails extends StatelessWidget {
                                         Padding(
                                           padding: const EdgeInsets.all(4.0),
                                           child: Text(
-                                              "Carbon Monoxide\n (μg/m^3)",
+                                              "Carbon Monoxide\n (μg/m\u00B3)",
                                               textAlign: TextAlign.center,
                                               style: Theme.of(context)
                                                   .primaryTextTheme
@@ -194,7 +194,7 @@ class WeatherDetails extends StatelessWidget {
                                       children: [
                                         Padding(
                                           padding: const EdgeInsets.all(4.0),
-                                          child: Text("Fine particles matter\n (μg/m^3)",
+                                          child: Text("Fine particles matter\n (μg/m\u00B3)",
                                               textAlign: TextAlign.center,
                                               style: Theme.of(context)
                                                   .primaryTextTheme

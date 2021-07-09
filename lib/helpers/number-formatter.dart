@@ -7,5 +7,5 @@ String formatNumber(String number) {
   int firstNonZero = splitNumber[0].indexOf(RegExp(r"[1-9]")) > -1
       ? splitNumber[0].indexOf(RegExp(r"[1-9]"))
       : splitNumber[0].length - 1;
-  return "${splitNumber[0].replaceRange(0, firstNonZero, '  ' * firstNonZero)}.${splitNumber[1]}";
+  return "${splitNumber[0].replaceRange(0, firstNonZero, '  ' * firstNonZero)}.${splitNumber[1]} μg/m\u00B3";
 }
