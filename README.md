@@ -1,16 +1,37 @@
-# smog_app
+## Table of contents
+* [General info](#general-info)
+* [Technologies and Patterns](#technologies-and-patterns)
+* [Features](#features)
+* [Screenshots](#screenshots)
 
-A new Flutter project.
+## General info
+Simple flutter app which allows you to find out about air pollution, showing current and historical data.
+    
+## Technologies and Patterns
+Created with:
+* Flutter
 
-## Getting Started
+In this project I am trying to correctly use following patterns, concepts and libraries:
+* BLoC for state management
+* Dependency injections
+* Hive for local database
+* Synfucion flutter charts
+    
+## Features
+* Look for current and historical pollution data on charts.
 
-This project is a starting point for a Flutter application.
+To do:
+* Bugs in searchBar
+* Improve prompts
+* Add tests
+* Light theme
 
-A few resources to get you started if this is your first Flutter project:
+## Screenshots
+![image](https://user-images.githubusercontent.com/52087343/125372471-78b0b680-e383-11eb-91fc-d1b222aa414c.png)
+![image](https://user-images.githubusercontent.com/52087343/125372517-92ea9480-e383-11eb-8c3b-6aef37c2799b.png)
+![image](https://user-images.githubusercontent.com/52087343/125372562-abf34580-e383-11eb-9573-06722e9c1506.png)
+![image](https://user-images.githubusercontent.com/52087343/125372787-389e0380-e384-11eb-9add-476bb788687f.png)
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+
+
