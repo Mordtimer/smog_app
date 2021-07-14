@@ -27,10 +27,17 @@ To do:
 * Light theme
 
 ## Screenshots
-![image](https://user-images.githubusercontent.com/52087343/125372471-78b0b680-e383-11eb-91fc-d1b222aa414c.png)
-![image](https://user-images.githubusercontent.com/52087343/125372517-92ea9480-e383-11eb-8c3b-6aef37c2799b.png)
-![image](https://user-images.githubusercontent.com/52087343/125372562-abf34580-e383-11eb-9573-06722e9c1506.png)
-![image](https://user-images.githubusercontent.com/52087343/125372787-389e0380-e384-11eb-9add-476bb788687f.png)
+
+<p align="center">
+<img src="https://user-images.githubusercontent.com/52087343/125372471-78b0b680-e383-11eb-91fc-d1b222aa414c.png" data-canonical-src="https://gyazo.com/eb5c5741b6a9a16c692170a41a49c858.png" width="200" height="400" />
+&nbsp; &nbsp; &nbsp; &nbsp;
+<img src="https://user-images.githubusercontent.com/52087343/125372517-92ea9480-e383-11eb-8c3b-6aef37c2799b.png" data-canonical-src="https://gyazo.com/eb5c5741b6a9a16c692170a41a49c858.png" width="200" height="400" />
+</p>
+<p align="center">
+<img src="https://user-images.githubusercontent.com/52087343/125372562-abf34580-e383-11eb-9573-06722e9c1506.png" data-canonical-src="https://gyazo.com/eb5c5741b6a9a16c692170a41a49c858.png" width="200" height="400" />
+&nbsp; &nbsp; &nbsp; &nbsp;
+<img src="https://user-images.githubusercontent.com/52087343/125372787-389e0380-e384-11eb-9add-476bb788687f.png" data-canonical-src="https://gyazo.com/eb5c5741b6a9a16c692170a41a49c858.png" width="200" height="400" />
+</p>
 
 
 
